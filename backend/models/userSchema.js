@@ -26,10 +26,11 @@ const userSchema = new mongoose.Schema({
 
 })
 userSchema.pre("save",async function(){
-        const hashed = await bcrypt.hash(this.password,10)
-        return hashed
+    this.email = this.email.toUpperCase()
+        const hashed = await bcrypt.hash(this.password,process.env.SALT)
+        this.password = hashed
 
     
-    bcrypt.hash(this.password,8)
+    
 })
 module.exports = mongoose.model("user",userSchema)

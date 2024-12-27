@@ -4,7 +4,7 @@ const roleModel = require("../models/roleSchema")
 const createRole = (req,res)=>{
     console.log(req);
 
-    
+    //admin==>createCat-deleteCat-addPro-deletePro-
     const {roleName, permissions} = req.body
     console.log( roleName,permissions);
     
