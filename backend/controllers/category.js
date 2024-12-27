@@ -7,6 +7,7 @@ const categoryModel = require("../models/categorySchema")
 
  const addCategory = (req,res)=>{
     const{name,image} = req.body
+    //check if category name already exist??????????
 
     if(name && image){
         const newCategory = new categoryModel({
@@ -29,11 +30,28 @@ const categoryModel = require("../models/categorySchema")
 
         
     }
-    res.status().json
+    else{
+        res.json(err)
+    }
+    
 } 
 //-----------------------------------------------------------------------
 
 const deleteCategoryById = (req,res)=>{
+    const {id}= req.params
+    categoryModel.deleteOne({id})
+    .then((result)=>{
+        res.json(result)
+
+    })
+    .catch((err)=>{
+        res.json(err)
+
+    })
+//------------------------------------------------------------------------
+//click on specific specific category call  products 
+
+
 
 
 
@@ -42,5 +60,5 @@ const deleteCategoryById = (req,res)=>{
 
 module.exports = ({
     addCategory,
-    deleteCategory
+    deleteCategoryById
 })
