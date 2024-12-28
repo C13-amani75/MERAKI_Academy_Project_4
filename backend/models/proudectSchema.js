@@ -1,12 +1,10 @@
 const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
-    
     categoryName:{
-        type:{type: mongoose.Schema.Types.ObjectId},
-     
+        type:{type: mongoose.Schema.Types.ObjectId,ref:"category"}
     },
-    likes:{ type:Number},
+    likes:{type:Number},
     rate: { type:Number},
     picture:
         [{ type:String}]
@@ -19,6 +17,7 @@ const productSchema = new mongoose.Schema({
     }],
     color:[{
         type:String //color rgb
+        
     }]
 })
 
