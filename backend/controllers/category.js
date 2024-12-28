@@ -5,7 +5,7 @@ const categoryModel = require("../models/categorySchema")
   //bags,hijab,pants,dress
  //post->each category ==> pages
 
- const addCategory = (req,res)=>{
+const addCategory = (req,res)=>{
     const{name,image} = req.body
     //check if category name already exist??????????
 

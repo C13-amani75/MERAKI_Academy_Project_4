@@ -105,12 +105,25 @@ const getAllProducts =(req,res)=>{
 
 
 }
-//.....................user features....................................
 
+//.....................user features....................................
+//add to card 
+const addTOCard =()=>{
+   //onclick===>id of product 
+   //push this id in the user documents 
+   //take user from payload + card
+   //push product id into that card
+}
+
+
+//card - remove
+
+
+//favorite -add-remove
 
 //likes -remove -add
-//add to card -remove
-//favorite -add-remove
+
+
 //rate by start-add-remove-remove rate 
 //product rate 
 //click on category -see product and its feature 
