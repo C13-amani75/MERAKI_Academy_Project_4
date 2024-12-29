@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt =require("bcrypt")
+const bcrypt = require("bcrypt");
 const userSchema = new mongoose.Schema({
     email:{
         type:String,
@@ -17,15 +17,15 @@ const userSchema = new mongoose.Schema({
     //cards[{idof product:{{type: mongoose.Schema.Types.ObjectId}},quintity:Number },quntity of the whole products:{Number} [++quintity of every product]]
     card:[
         {type: mongoose.Schema.Types.ObjectId,ref:"product"}
-        
     ],// id of product
     favoriteList:[{type: mongoose.Schema.Types.ObjectId}],//id of product
     role:{type: mongoose.Schema.Types.ObjectId,ref:"role"}
-
 })
 userSchema.pre("save",async function(){
-    this.email = this.email.toUpperCase()
-        const hashed = await bcrypt.hash(this.password,process.env.SALT)
-        this.password = hashed
+    console.log(this.email.toLowerCase,this.password);
+    this.email = (this.email)
+    const salt = 10
+        const hashed = await bcrypt.hash(this.password,salt);
+        this.password = hashed    
 })
 module.exports = mongoose.model("user",userSchema)

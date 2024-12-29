@@ -4,12 +4,20 @@ const mongoose = require("mongoose");
 //use userEffect to call each category +call products 
 //add product -delete - update
 //............Admin features...........................
-const addProduct = (req,res)=>{
-    const {categoryName,likes,
-        rate,picture,description,size,color} = req.body
+const addProduct = (req,res)=>{//Done
+    const {
+        category,
+        picture,
+        description,
+        size,
+        color} = req.body
         const newProduct = new productModel({
-            categoryName,likes,rate,
-            picture,description,size,color
+            category,
+            likes:0,
+            rate:0,
+            picture,
+            description,
+            size,color
         })
         newProduct
         .save()
@@ -26,17 +34,20 @@ const addProduct = (req,res)=>{
             res.json(err)
         })
 }
-const deleteProductById =(req,res)=>{
+const deleteProductById =(req,res)=>{ //Done
         const {id}= req.params
-        productModel.deleteOne({id})
+        productModel.deleteOne({_id:id})
         .then((result)=>{
             res.json(result)
         })
         .catch((err)=>{
-            res.json(err)
+            res.json({error:err,
+                result:"no user deleted",
+                success:false
+            })
         })
 }
-const updateProduct = (req,res)=>{
+const updateProduct = (req,res)=>{ //Done 
     const {id}= req.params
     const elements = req.body
         productModel
@@ -58,9 +69,11 @@ const updateProduct = (req,res)=>{
             res.json(err)
         })
 }
-const getProductsById =(req,res)=>{
+//............................userFeatures...................
+const getProductsById =(req,res)=>{//Done
     const {id} = req.params
     productModel.findById({_id:id})
+    .populate("category")
     .then((result)=>{
         if(!result){
             res.status("404").json({
@@ -78,58 +91,92 @@ const getProductsById =(req,res)=>{
         res.json(err)
     })
 }
-const getAllProducts =(req,res)=>{
+const getAllProducts =(req,res)=>{ //Done
     productModel.find({})
+    .populate("category")
     .then((result)=>{
-        if(!result){
+        if(result.length === 0){
+            console.log(result);
+            
             res.status("404").json({
-                success:false,
+                success:true,
                 message:"no product added yet"
             })
         }
-        res.status(200).json({
+        else{
+            console.log(result);
+            
+            res.status(200).json({
             success:true,
             message:"the process success",
             result:result
         })
+        }
+        
     })
     .catch((err)=>{
         res.json(err)
     })
 }
-
-
-
-//.....................user features....................................
-//add to card /??????????
-const addTOCard = (req,res)=>{
-    //check if the product already in the card
-    //onclick getid of that product into url 
-    //search in user model 
-    //push that is from url into card of that user
-    const id = req.params.id
-    const{userId} = req.token
-    console.log(userId,id)
-    userModel.findByIdAndUpdate({_id:userId},{$push:{card:id}})
+//get product depending on category //Done 
+const getProductsByCategoryId = (req,res)=>{
+    const {id} =req.params
+    productModel.find({category:id})
     .then((result)=>{
-        console.log(22)
-        console.log(userModel);
         res.json(result)
+
     }).catch((error)=>{
-        console.log(77);
         res.json(error)
     })
 }
 
+
+//.....................card and user features....................................
+//add to card /??????????
+const addTOCard = (req,res)=>{ //Done
+    //check if the product already in the card
+    //onclick getId of that product into url 
+    //search in user model 
+    //push that is from url into card of that user
+    const {id} = req.params
+    const{userId} = req.token
+    console.log(userId);
+    
+    console.log(userId,id)
+    //find by id the user 
+    //check if user.card have id 
+    //if dont update +push
+    userModel.findOne({card:id})
+    .then((result)=>{
+        if(!result){
+            console.log(result);
+            
+            userModel.findByIdAndUpdate({_id:userId},{$push:{card:id}})
+            .then((result)=>{
+                res.json(result)
+            })
+        }
+        else{
+            res.json({
+                success:false,
+                message:"the product already exist"
+            })
+        }
+    })
+    .catch((result)=>{
+        res.json(result)
+    })
+}
+
 //get card of specific id 
-const getCardByUserId = (req,res)=>{
+const getCardByUserId = (req,res)=>{//Done
     const {id} =req.params 
     userModel.findById({_id:id})
     .then((result)=>{
         if(result){
             if(result.card.length === 0){
                 res.json({
-                    result:"the card empty"
+                    result:"no item in your card"
                 })
             }
             else{
@@ -164,12 +211,16 @@ const deleteFromCardByproductId = (req,res)=>{
 
 
 }
-//card - remove
+//.....................favCard feature............
+//addToFavById ==>product and get card by token
+
+//removeFromFavById==>product and get card by token
 
 
-//favorite -add-remove
+//..............like feature.......................
+//addLikeByProductId
+//removeLikeByProductId
 
-//likes -remove -add
 
 
 //rate by start-add-remove-remove rate 
@@ -179,4 +230,9 @@ const deleteFromCardByproductId = (req,res)=>{
 
 //get product depending on hte name of category
 
-module.exports = {addProduct,deleteProductById,updateProduct,getProductsById,getAllProducts,addTOCard,getCardByUserId,deleteFromCardByproductId}
+module.exports = {getProductsByCategoryId,
+    addProduct,deleteProductById,
+    updateProduct,getProductsById,
+    getAllProducts,addTOCard,
+    getCardByUserId,
+    deleteFromCardByproductId}

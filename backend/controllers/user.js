@@ -4,21 +4,21 @@ const bcrypt = require("bcrypt")
 
 //to do check every error state write it correctly
 //write catch error in pro
-const registerFunction = (req,res)=>{
+//1-----------------------------------------------------------
+const registerFunction = (req,res)=>{   //Done//
     const {email,password,username,role}= req.body
-    console.log(userModel.length);
     userModel.findOne({email:email})
     .then((result)=>{
-        console.log("Register");
+        console.log(result);
         if(result){
             res.status(409).json({
                 success:false,
                 message:"the user already exist"
             })
         }
-
-    console.log("Register1");
-    const newUser = new userModel({
+        else{
+            console.log("Register1");
+            const newUser = new userModel({
                 email,
                 password,
                 username,
@@ -26,8 +26,10 @@ const registerFunction = (req,res)=>{
                 card:[],
                 favoriteList:[]
             })
-            newUser.save()
+            newUser
+            .save()
             .then((result)=>{
+                console.log(result,"result");  
                 console.log("Register2");
                 res.status(201).json({
                     success:true,
@@ -36,22 +38,23 @@ const registerFunction = (req,res)=>{
                 })
             })
             .catch((err)=>{
-                res.json(2)
+                console.log(err);
+                
+                res.json(err)
             })
         }
-    
-           
-        
-    
-)}
-const loginFunction = (req,res)=>{
+
+        }).catch((err)=>{
+            res.json(err)
+        })
+    }
+const loginFunction = (req,res)=>{ //Done
     const {email,password} = req.body
    //check at first the email without the pass
-    const emailValue =email.toUpperCase()
-    userModel.findOne({email:emailValue})
-     //check if the email exist ,then the hashed password is already the same==>async process
+    userModel.findOne({email:email})
+     //check if the email exist ,then if the hashed password is already the same==>async process
     .populate("role")
-    .then(async (result)=>{
+    .then(async function(result){
         if(result){
             const isValidPassword = await bcrypt.compare(password,result.password)
             if(isValidPassword){
@@ -75,28 +78,36 @@ const loginFunction = (req,res)=>{
                 url:"https://www.pexels.com/photo/woman-wearing-brown-leather-tote-bag-1936848/"
             })
         }
-        else{
-            res.status(404).json({
+            res.status(403).json({
                 success:false,
-                message:"the email invalid"
-            })   
-            }
+                message:"the password is incorrect"
+            })    
+        }
+        else{
+            res.status(403).json({result:"the email is invalid",
+            })
         }
     }).catch((err)=>{
+        console.log(err);
+        
         res.json(err)
+    })
+}
+const getAllUsers = (req,res)=>{
+    userModel.find({})
+    .populate("role")
+    .then((result)=>{
+        res.json(result)
+    })
+    .catch((error)=>{
+        res.json(error)
 
     })
 }
 //-------------------------------------------------------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
 module.exports = {
     registerFunction,
-    loginFunction
+    loginFunction,
+    getAllUsers
 }

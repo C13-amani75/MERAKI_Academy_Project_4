@@ -4,12 +4,13 @@ require("dotenv").config()
 
 const userRouter = express.Router()
 const{registerFunction,
-    loginFunction} = require("../controllers/user")
+    loginFunction, getAllUsers} = require("../controllers/user")
 
 
 userRouter.post("/register",registerFunction)
 //just in login authen 
 userRouter.post("/login",loginFunction)
+userRouter.get("/",getAllUsers)
 
 module.exports = {
     userRouter

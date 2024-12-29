@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
-    categoryName:{
-        type:{type: mongoose.Schema.Types.ObjectId,ref:"category"}
-    },
+    category:
+       {type: mongoose.Schema.Types.ObjectId,ref:"category"}/* {type: mongoose.Schema.Types.ObjectId,ref:"category"} */
+    ,
     likes:{type:Number},
     rate: { type:Number},
     picture:

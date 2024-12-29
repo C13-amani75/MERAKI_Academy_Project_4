@@ -3,16 +3,22 @@
 const productRouter = express.Router()
 const authentication =require("../middleware/authentication")
 const authorization =require("../middleware/authorization")
-const {addProduct,deleteProductById,updateProduct,getProductsById,getAllProducts,addTOCard,getCardByUserId,deleteFromCardByproductId} = require("../controllers/product")
+const {addProduct,deleteProductById,
+    updateProduct,getProductsById,
+    getAllProducts,addTOCard,
+    getCardByUserId,getProductsByCategoryId,
+    deleteFromCardByproductId} = require("../controllers/product")
+
 
 productRouter.post("/create",addProduct)
 productRouter.delete("/delete/:id",deleteProductById)
 productRouter.put("/update/:id",updateProduct)
 productRouter.get("/", getAllProducts)
 productRouter.get("/:id", getProductsById)
-productRouter.put("/card:id",authentication,addTOCard)
+productRouter.put("/card/:id",authentication,addTOCard)
 productRouter.get("/card/:id",getCardByUserId)
 productRouter.delete("/card/:id",authentication,deleteFromCardByproductId)
+productRouter.get("/category/:id",getProductsByCategoryId)
 /* 
 post:
 http://localhost:5000/product/create
