@@ -8,3 +8,5 @@ roleRouter.post("/",createRole)
 module.exports = {
     roleRouter
 }
+/* post => roles
+http://localhost:5000/roles/ //body*/

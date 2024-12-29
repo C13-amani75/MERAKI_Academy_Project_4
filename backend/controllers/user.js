@@ -6,36 +6,44 @@ const bcrypt = require("bcrypt")
 //write catch error in pro
 const registerFunction = (req,res)=>{
     const {email,password,username,role}= req.body
+    console.log(userModel.length);
     userModel.findOne({email:email})
     .then((result)=>{
-        if(!result){
-            const newUser = new userModel({
-                email,
-                password,
-                username,
-                card:[],
-                favoriteList:[],
-                role
-            })
-            newUser.save()
-            .then(()=>{
-                res.status(201).json({
-                    success:true,
-                    message:"the user created",
-                    user:newUser
-                })
-            })
-            .catch(()=>{
-            })
-        }
-        else{
+        console.log("Register");
+        if(result){
             res.status(409).json({
                 success:false,
                 message:"the user already exist"
             })
         }
-    })
-}
+
+    console.log("Register1");
+    const newUser = new userModel({
+                email,
+                password,
+                username,
+                role,
+                card:[],
+                favoriteList:[]
+            })
+            newUser.save()
+            .then((result)=>{
+                console.log("Register2");
+                res.status(201).json({
+                    success:true,
+                    message:"the user created",
+                    user:result
+                })
+            })
+            .catch((err)=>{
+                res.json(2)
+            })
+        }
+    
+           
+        
+    
+)}
 const loginFunction = (req,res)=>{
     const {email,password} = req.body
    //check at first the email without the pass
@@ -44,13 +52,11 @@ const loginFunction = (req,res)=>{
      //check if the email exist ,then the hashed password is already the same==>async process
     .populate("role")
     .then(async (result)=>{
-        console.log(result.password);
         if(result){
-            console.log(password);
             const isValidPassword = await bcrypt.compare(password,result.password)
             if(isValidPassword){
                 //create token
-                const payload ={
+                const payload = {
                     userId:result._id,
                     permissions:result.role.permissions,
                     username:result.username,
@@ -75,11 +81,10 @@ const loginFunction = (req,res)=>{
                 message:"the email invalid"
             })   
             }
-            res.status(404).json("the password is not correct")
         }
-    })
-    .catch((err)=>{
+    }).catch((err)=>{
         res.json(err)
+
     })
 }
 //-------------------------------------------------------------------------------------------------------------------------------

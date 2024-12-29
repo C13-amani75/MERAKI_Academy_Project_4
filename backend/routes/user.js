@@ -1,6 +1,6 @@
 const express = require("express")
 require("dotenv").config()
-const authentication =require("../middleware/authentication")
+
 
 const userRouter = express.Router()
 const{registerFunction,
@@ -14,3 +14,13 @@ userRouter.post("/login",loginFunction)
 module.exports = {
     userRouter
 }
+
+/* post => users
+http://localhost:5000/users/register //body
+http://localhost:5000/users/login //body
+
+get =>users
+
+
+
+ */

@@ -13,6 +13,6 @@ const authorization = (permissionValue)=>{
         }
         res.status(403).json("forbidden ")
     }
-
-
 }
+
+module.exports = authorization
