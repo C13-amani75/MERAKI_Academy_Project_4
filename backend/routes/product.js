@@ -7,7 +7,10 @@ const {addProduct,deleteProductById,
     updateProduct,getProductsById,
     getAllProducts,addTOCard,
     getCardByUserId,getProductsByCategoryId,
-    deleteFromCardByproductId} = require("../controllers/product")
+    deleteFromCardByproductId,
+    addToFav,getFavByUserId,
+    deleteFromFavCardByproductId,
+    likeFeature,getAllLikeByProductId} = require("../controllers/product")
 
 
 productRouter.post("/create",addProduct)
@@ -19,6 +22,11 @@ productRouter.put("/card/:id",authentication,addTOCard)
 productRouter.get("/card/:id",getCardByUserId)
 productRouter.delete("/card/:id",authentication,deleteFromCardByproductId)
 productRouter.get("/category/:id",getProductsByCategoryId)
+productRouter.post("/favorite/:id",authentication,addToFav)
+productRouter.get("/favorite/:id",getFavByUserId)
+productRouter.delete("/favorite/:id",authentication,deleteFromFavCardByproductId)
+productRouter.post("/like/:id",likeFeature)
+productRouter.get("/like/:id",getAllLikeByProductId)
 /* 
 post:
 http://localhost:5000/product/create

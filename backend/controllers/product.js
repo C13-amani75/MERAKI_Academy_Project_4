@@ -194,45 +194,150 @@ const getCardByUserId = (req,res)=>{//Done
     })
 }
 //delete from card
-const deleteFromCardByproductId = (req,res)=>{
+const deleteFromCardByproductId = (req,res)=>{//Done 
     //product id
     const {id} = req.params
     //user id to get card
     const{userId}= req.token
-    userModel.updateOne({_id:userId},{$pull:{card:id}})
+    userModel.findByIdAndUpdate({_id:userId},{$pull:{card:id}})
     .then((result)=>{
         res.json(result)
     })
     .catch((err)=>{
         res.json(err)
-
     })
-
-
-
 }
+
+
 //.....................favCard feature............
 //addToFavById ==>product and get card by token
+//Add to favorite
+const addToFav = (req,res)=>{ //Done
+    const {id} = req.params
+    const{userId} = req.token
+    console.log(userId);
+    console.log(userId,id)
+    userModel.findOne({favoriteList:id})
+    .then((result)=>{
+        if(!result){
+            console.log(result);
+            
+            userModel.findByIdAndUpdate({_id:userId},{$push:{favoriteList:id}})
+            .then((result)=>{
+                res.json(result)
+            })
+        }
+        else{
+            res.json({
+                success:false,
+                message:"the product already exist"
+            })
+        }
+    })
+    .catch((result)=>{
+        res.json(result)
+    })
+}
+//get favList for specific user
+const getFavByUserId = (req,res)=>{//Done
+    const {id} = req.params 
+    userModel.findById({_id:id})
+    .then((result)=>{
+        if(result){
+            if(result.favoriteList.length === 0){
+                res.json({
+                    result:"no item in your favorite card"
+                })
+            }
+            else{
+                res.json({result:result.favoriteList,
+                "success":true
+            })
+            }
+        }
+        else{
+            res.json("maybe you are not log in yet! or something wrong occur")
+        }
+    })
+    .catch((error)=>{
+        res.json(error)
+    })
+}
 
+
+//remove from Favorite
+const deleteFromFavCardByproductId = (req,res)=>{//Done 
+    //product id
+    const {id} = req.params
+    //user id to get card
+    const{userId}= req.token
+    userModel.findByIdAndUpdate({_id:userId},{$pull:{favoriteList:id}})
+    .then((result)=>{
+        res.json(result)
+    })
+    .catch((err)=>{
+        res.json(err)
+    })
+}
 //removeFromFavById==>product and get card by token
-
-
 //..............like feature.......................
+//use mongoose methods +_
+//send idProduct via ==params 
+   //key==>0 dislike remove -1 1 ==>add 1
+const likeFeature = (req,res)=>{ //Done
+    const {id} = req.params
+    const{likeValue} =req.body
+    //likeValue ==>1 like or -1 dislike
+        productModel.findByIdAndUpdate({_id:id},{$inc:{likes:likeValue}})
+        .then((result)=>{
+            res.json(result)
+        })
+}
+//getAll like for specific product ==>use effect on[likes]
+const getAllLikeByProductId = (req,res)=>{ //Done
+    const{id} =req.params
+    productModel.findById({_id:id})
+    .then((result)=>{
+        res.json({
+            result:result.likes //save in variable or state
+        })
+    }).catch((error)=>{
+        res.json(error)
+    })
+}
+
+//................rating functions.......................................
+//rate function : get rate 
+//createRate :1 2 3 4
+
+//send with body 
 //addLikeByProductId
 //removeLikeByProductId
-
-
-
 //rate by start-add-remove-remove rate 
 //product rate 
 //click on category -see product and its feature 
-
-
 //get product depending on hte name of category
+
+
+//.............rate features.............
+//update =>if the user change the value of rating 
+        //=>remove rating 
+        //=>show the user rating value 
+        //=>higher rating product from 3.5 to 5 and with descending order rate.rate
+        // * * * * *
+        //when user click on *st =>updateRateById =>key:1 =>rate.stars[key-1]=>inc +1
+        //A form with radio buttons =>update state depending on choose
+        
+
+
+
+
 
 module.exports = {getProductsByCategoryId,
     addProduct,deleteProductById,
     updateProduct,getProductsById,
     getAllProducts,addTOCard,
-    getCardByUserId,
-    deleteFromCardByproductId}
+    getCardByUserId,addToFav,
+    deleteFromCardByproductId,
+    getFavByUserId,deleteFromFavCardByproductId,
+    likeFeature,getAllLikeByProductId}
