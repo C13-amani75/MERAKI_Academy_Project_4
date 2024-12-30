@@ -10,7 +10,8 @@ const {addProduct,deleteProductById,
     deleteFromCardByproductId,
     addToFav,getFavByUserId,
     deleteFromFavCardByproductId,
-    likeFeature,getAllLikeByProductId} = require("../controllers/product")
+    likeFeature,
+    getAllLikeByProductId,rateProductById} = require("../controllers/product")
 
 
 productRouter.post("/create",addProduct)
@@ -27,6 +28,7 @@ productRouter.get("/favorite/:id",getFavByUserId)
 productRouter.delete("/favorite/:id",authentication,deleteFromFavCardByproductId)
 productRouter.post("/like/:id",likeFeature)
 productRouter.get("/like/:id",getAllLikeByProductId)
+productRouter.post("/rate/:id",rateProductById)
 /* 
 post:
 http://localhost:5000/product/create

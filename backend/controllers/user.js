@@ -54,45 +54,50 @@ const loginFunction = (req,res)=>{ //Done
     userModel.findOne({email:email})
      //check if the email exist ,then if the hashed password is already the same==>async process
     .populate("role")
-    .then(async function(result){
-        if(result){
-            const isValidPassword = await bcrypt.compare(password,result.password)
-            if(isValidPassword){
-                //create token
-                const payload = {
-                    userId:result._id,
-                    permissions:result.role.permissions,
-                    username:result.username,
-                    card:result.card,
-                    favorite_list:result.favoriteList
-                }
-                const options = {
-                    expiresIn:"24hr"
-                }
-                const token = jwt.sign(payload,process.env.SECRET_KEY,options);
-                res.status(200).json({
-                success:true,
-                message:"you log in successfully",
-                token:token,
-                user:result,
-                url:"https://www.pexels.com/photo/woman-wearing-brown-leather-tote-bag-1936848/"
-            })
-        }
-            res.status(403).json({
-                success:false,
-                message:"the password is incorrect"
-            })    
-        }
-        else{
+    .then(async (result)=>{
+        if(!result){
             res.status(403).json({result:"the email is invalid",
             })
+
         }
+        else{
+            const isValidPassword = await bcrypt.compare(password,result.password)
+            if(!isValidPassword){
+                res.status(403).json({
+                    success:false,
+                    message:"the password is incorrect"
+                })  
+            }
+                else{
+              //create token
+                const payload = {
+                userId:result._id,
+                permissions:result.role.permissions,
+                username:result.username,
+                card:result.card,
+                favorite_list:result.favoriteList
+            }
+
+            const options = {
+                expiresIn:"24hr"
+            }
+
+            const token = jwt.sign(payload,process.env.SECRET_KEY,options);
+            res.status(200).json({
+            success:true,
+            message:"you log in successfully",
+            token:token,
+            user:result,
+            url:"https://www.pexels.com/photo/woman-wearing-brown-leather-tote-bag-1936848/"
+        })
+    }
+}
     }).catch((err)=>{
         console.log(err);
-        
         res.json(err)
     })
 }
+
 const getAllUsers = (req,res)=>{
     userModel.find({})
     .populate("role")

@@ -1,37 +1,28 @@
 
 const jwt =require("jsonwebtoken")
 
-const authentication = (req,res,next)=>{
-    console.log("test")
-    try{
-        //check if there is any token found ether it is valid or not
-        if(!req.headers.authorization){
-        res.status(403).json({message:"forbidden",
-            success:false
-        })
-    }
-    //if its found 
-    //check if that token valid 
+const authentication = async(req,res,next)=>{
+    console.log("test") 
+    if(req.headers.authorization){
         const token = req.headers.authorization.split(" ").pop()
-        jwt.verify(token,process.env.SECRET_KEY,(error , payload)=>{
-        if(error){
-            console.log("test2")
-            res.status(403).json({
-                success:false,
-                message:"this token is invalid or expired"})
-        }else{
-            console.log("test3")
-            console.log(payload);
+    try{
+        const verification = await jwt.verify(token,process.env.SECRET_KEY)
+        req.token = verification
+        next()
+    }
+    catch(error){
+        console.log(error);
         
-            req.token = payload
-            next()
-        }
-        //result ==>payload
-})
-}
-catch(err){
-    console.log(err)
-    res.json(err)
-}
-}
+        res.json("token is invalid" )
+    }
+
+    
+        
+    }
+    else{
+        res.json("forbidden")
+    }}
+
+
+
 module.exports = authentication

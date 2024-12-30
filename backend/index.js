@@ -8,13 +8,15 @@ const PORT = process.env.PORT || 5000;
 const {userRouter} = require("./routes/user")
 const{roleRouter} = require("./routes/role")
 const {categoryRouter} = require("./routes/category")
-const {productRouter}= require("./routes/product")
+const {productRouter} = require("./routes/product")
+const {rateRouter} =require("./routes/rate")
 
 // Handles any other endpoints [unassigned - endpoints]
 app.use("/users", userRouter)
 app.use("/roles", roleRouter)
 app.use("/category", categoryRouter)
 app.use("/product", productRouter)
+app.use("/rate",rateRouter)
 app.use(cors());
 
 
