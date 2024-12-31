@@ -17,7 +17,8 @@ const addProduct = (req,res)=>{//Done
             rate:0,
             picture,
             description,
-            size,color
+            size,
+            color
         })
         newProduct
         .save()
@@ -305,51 +306,7 @@ const getAllLikeByProductId = (req,res)=>{ //Done
         res.json(error)
     })
 }
-
-//................rating functions.......................................
-//rate function : get rate 
-//createRate :1 2 3 4
-
-//send with body 
-//addLikeByProductId
-//removeLikeByProductId
-//rate by start-add-remove-remove rate 
-//product rate 
-//click on category -see product and its feature 
-//get product depending on hte name of category
-
-
-//.............rate features.............
-//update =>if the user change the value of rating 
-const rateProductById = (req,res)=>{
-   // * * * * *
-   //if click on(key2,second start) index[key -1] 
-   //  //date rate.stars[key -1
-//index ,value :-1 or 1
-    const {index,value} = req.body
-    const {id} = req.params
-    productModel.findByIdAndUpdate({_id:id},{$inc:{'rate.stars.0':value}})
-}
-
-const updateRateProductById = (req,res)=>{
-    
-}
-
-const removeRateById=(req,res)=>{
-
-}
-
-        //=>remove rating 
-        //=>show the user rating value 
-        //=>higher rating product from 3.5 to 5 and with descending order rate.rate
-        // * * * * *
-        //when user click on *st =>updateRateById =>key:1 =>rate.stars[key-1]=>inc +1
-        //A form with radio buttons =>update state depending on choose
-        //when change remove the previous value of rating 
-         //add new value of  rating
-
-
-
+//get rate of specific product 
 
 
 module.exports = {getProductsByCategoryId,
@@ -359,5 +316,4 @@ module.exports = {getProductsByCategoryId,
     getCardByUserId,addToFav,
     deleteFromCardByproductId,
     getFavByUserId,deleteFromFavCardByproductId,
-    likeFeature,getAllLikeByProductId,
-rateProductById}
+    likeFeature,getAllLikeByProductId}
