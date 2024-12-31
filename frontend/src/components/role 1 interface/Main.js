@@ -4,7 +4,7 @@ import React from 'react'
 const Main = () => {
   return (
     //category component ==>inside category ==>the category changed depending on selected category   
-    <div>Main</div>
+    <div className='main'>Main</div>
     
   )
 }
