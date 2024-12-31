@@ -59,15 +59,11 @@ const deleteRateByProductId = (req,res)=>{ //Done
         rateModel.findOneAndUpdate({productId:productId},{rateValue:0})
     .then((result)=>{
         res.json(result)
-
     })
     .catch((error)=>{
         res.json(error)
     })
 }
-
-
-
 module.exports= {
     addRateByProductId,
     deleteRateByProductId
