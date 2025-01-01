@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const db = require("./models/db")
 const app = express();
+app.use(cors());
 app.use(express.json());
 const PORT = process.env.PORT || 5000;
 //routers
@@ -10,7 +11,7 @@ const{roleRouter} = require("./routes/role")
 const {categoryRouter} = require("./routes/category")
 const {productRouter} = require("./routes/product")
 const {rateRouter}= require("./routes/rate")
-app.use(cors());
+
 
 // Handles any other endpoints [unassigned - endpoints]
 app.use("/users", userRouter)

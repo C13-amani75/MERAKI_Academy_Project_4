@@ -6,25 +6,13 @@ const bcrypt = require("bcrypt")
 //write catch error in pro
 //1-----------------------------------------------------------
 const registerFunction = (req,res)=>{   //Done//
-    const {email,password,username,role}= req.body
-    userModel.findOne({email:email})
-    .then((result)=>{
-        console.log(result);
-        if(result){
-            res.status(200).json({
-                success:false,
-                message:"the user already exist"
-            })
-        }
-        else{
+    const {email,password,username,role} = req.body
             console.log("Register1");
             const newUser = new userModel({
                 email,
                 password,
                 username,
-                role,
-                card:[],
-                favoriteList:[]
+                role
             })
             newUser
             .save()
@@ -38,61 +26,77 @@ const registerFunction = (req,res)=>{   //Done//
                 })
             })
             .catch((err)=>{
-                console.log(err);
+                if(err.keyPattern){
+                    res.status(409).json({
+                        success:false,
+                        message:"the email is already exist",
+                    })
+                }
                 
-                res.json(err)
+                res.status(500).json({
+                    success:false,
+                    message:"server Error",
+                    result:err
+                })
             })
-        }
-
-        }).catch((err)=>{
-            res.json(err)
-        })
     }
-const loginFunction = (req,res)=>{ //Done
+const loginFunction = (req,res)=>{ 
+    //Done
     const {email,password} = req.body
    //check at first the email without the pass
-    userModel.findOne({email:email})
-     //check if the email exist ,then if the hashed password is already the same==>async process
+    userModel.findOne({email:email.toLowerCase()})//check if the email exist ,then if the hashed password is already the same==>async process
     .populate("role")
     .then(async (result)=>{
+        console.log(result);
+        
         if(!result){
-            res.status(403).json({result:"the email is invalid",
+            res.status(403).json({
+                success:false,
+                message:"the email is incorrect"
             })
-
         }
         else{
-            const isValidPassword = await bcrypt.compare(password,result.password)
-            if(!isValidPassword){
-                res.status(403).json({
-                    success:false,
-                    message:"the password is incorrect"
-                })  
-            }
-                else{
-              //create token
-                const payload = {
-                userId:result._id,
-                permissions:result.role.permissions,
-                username:result.username,
-                card:result.card,
-                favorite_list:result.favoriteList
-            }
+            try{
+                console.log(2);
+                    const isValidPassword = await bcrypt.compare(password,result.password)
+                    if(!isValidPassword){
+                        console.log(3);
+                        res.status(403).json({
+                            success:false,
+                            message:"the password is incorrect"
+                        })  
+                    }
+                      //create token
+                        const payload = {
+                        userId:result._id,
+                       /*  permissions:result.role.permissions, */
+                        username:result.username,
+                        card:result.card,
+                        favorite_list:result.favoriteList
+                    }
+        
+                    const options = {
+                        expiresIn:"24hr"
+                    }
+        
+                    const token = jwt.sign(payload,process.env.SECRET_KEY,options);
+                    res.status(200).json({
+                    success:true,
+                    message:"you log in successfully",
+                    token:token,
+                    user:result
+                })
+        }catch(error){
+            throw new Error(
+                error
+            )
+        
+        }
 
-            const options = {
-                expiresIn:"24hr"
-            }
-
-            const token = jwt.sign(payload,process.env.SECRET_KEY,options);
-            res.status(200).json({
-            success:true,
-            message:"you log in successfully",
-            token:token,
-            user:result,
-            url:"https://www.pexels.com/photo/woman-wearing-brown-leather-tote-bag-1936848/"
-        })
-    }
-}
-    }).catch((err)=>{
+        }
+    
+})
+.catch((err)=>{
         console.log(err);
         res.json(err)
     })

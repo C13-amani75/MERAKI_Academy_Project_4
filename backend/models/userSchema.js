@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
 })
 userSchema.pre("save",async function(){
     console.log(this.email.toLowerCase,this.password);
-    this.email = (this.email)
+    this.email = (this.email.toLowerCase())
     const salt = 10
         const hashed = await bcrypt.hash(this.password,salt);
         this.password = hashed    

@@ -2,42 +2,33 @@ import React from 'react'
 import { useContext } from 'react'
 import {userContext} from '../../App'
 import axios from "axios"
+import Login from './Login'
 
-const Register = () => {
+const Register = () => { //Done
   const styleMessage=()=>{
     if(isRegister){
       return {backGroundColor:"green",color:"white"}
     }
     return  {backGroundColor:"red",color:"white"}
-   
-  
   }
   const {setUserInfo,userInfo,setRegister,isRegister,resultMessage,setResultMessage} = useContext(userContext)
   const registerFunction = ()=>{
-    const {email,password,userName}= userInfo
+    const {email,password,userName} = userInfo
+    //check user info before send
+    
     axios.post("http://localhost:5000/users/register",{
+      username:userName,
         email:email,
         password:password,
-        username:userName
+
     })
     .then((result)=>{
-      if(result){
-        console.log(result);
-        
-        setResultMessage(result.data.message)
-        setRegister(true)
-      }
-      else{
-        console.log(result);
-        
-        setResultMessage(result.response.data.message)
-        setRegister(false)
-      }
-      
-      //if result.data.success = true 
-      
+      setRegister(true)
+      console.log(result);
+
     })
     .catch((error)=>{
+      setRegister(false)
       console.log(error);
       
     })
@@ -46,23 +37,32 @@ const Register = () => {
   }
   //when click on register now ==>show login ==>if loged in correctly show home 
   return (
-    <div>
-      <input onChange={(e)=>{
-        setUserInfo({...userInfo,userName:e.target.value})
+    <>
+    {
+    !isRegister&&<div>
+      <input type="text" required onChange={(e)=>{
+          console.log("e",e.target.value)
+            setUserInfo({...userInfo,userName:e.target.value})
+        
       }} placeholder='UserName'/><br /><br />
-      <input onChange={(e)=>{
+      <input type="password" required onChange={(e)=>{
         setUserInfo({...userInfo,password:e.target.value})
       }}   placeholder='Password'/><br /><br />
-      <input onChange={(e)=>{
+      <input type='email' required onChange={(e)=>{
         setUserInfo({...userInfo,email:e.target.value})
       }}  placeholder='Email'/><br /><br />
       <button onClick={()=>{
         console.log(userInfo);
-        
         registerFunction()
+        setUserInfo("")
       }}>register Now</button><br /><br />
-      <p style={ {styleMessage}} >{resultMessage}</p>
+      <p>{resultMessage}</p>
+      {setResultMessage("")}
     </div>
+    
+    }
+    {isRegister&& <Login/>}
+    </>
   )
 }
 

@@ -22,7 +22,7 @@ import { BsPersonCircle } from "react-icons/bs";
 const App = () => {
 
   const [userInfo,setUserInfo] = useState({})
-  const [isLogin,setLogin] = useState(false)
+
   const [isRegister,setRegister] =useState(false)
   const [token,setToken] = useState(localStorage.getItem("token"))
   const [resultMessage,setResultMessage] = useState("")
@@ -32,7 +32,7 @@ const App = () => {
   
   return (
 //email,pass, userName ,we send card,fav=>[] ==>send with axios to back check 
-  <userContext.Provider value={{isRegister,setRegister,setLogin,userInfo,setUserInfo,resultMessage,setResultMessage}} >
+  <userContext.Provider value={{token,setToken,isRegister,setRegister,userInfo,setUserInfo,resultMessage,setResultMessage}} >
   <div className="App">
     <header>
       <ul className='headerList'>
@@ -41,7 +41,7 @@ const App = () => {
       </ul>
       <h2><Link to="/">Camelia Store</Link></h2>
       <span><input></input><FaSearch /></span>
-      <span>{!isRegister&&<Link className='headerIcon' to="/register" ><BsPersonCircle /> sigh up</Link> }<Link  to="/login" >Login</Link></span>
+      <span>{!isRegister&&<Link className='headerIcon' to="/register" ><BsPersonCircle />create Account</Link> }<Link  to="/login" >Login</Link></span>
     </header>
     
   
