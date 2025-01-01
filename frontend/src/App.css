@@ -1,4 +1,5 @@
 .App {
+  font-size: 20px;
   text-align: center;
   padding:0;
   margin:0;
@@ -7,16 +8,21 @@
 }
 :root{
   --black:black;
+
   /* colors */
 }
-.header{
-  background-color: antiquewhite;
+header{
+  display: flex;
+  justify-content: space-around;
 }
-.footer{
-  background-color: beige;
+.headerList{
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
 }
-.main{
-  background-color: cadetblue;
+Link{
+  
+  text-decoration: none;
 }
 
 

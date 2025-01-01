@@ -11,7 +11,7 @@ const registerFunction = (req,res)=>{   //Done//
     .then((result)=>{
         console.log(result);
         if(result){
-            res.status(409).json({
+            res.status(200).json({
                 success:false,
                 message:"the user already exist"
             })
