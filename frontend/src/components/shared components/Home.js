@@ -1,10 +1,11 @@
 import React from 'react'
-import Category from '../role 2 interface/Category'
+
 import Footer from './Footer'
+import Categories from '../role 2 interface/Categories'
 const Home = () => {
   return (
     <div>
-      <Category/>
+      <Categories/>
       <Footer/>
 
     </div>

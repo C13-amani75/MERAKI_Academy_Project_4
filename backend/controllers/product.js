@@ -6,12 +6,14 @@ const mongoose = require("mongoose");
 //............Admin features...........................
 const addProduct = (req,res)=>{//Done
     const {
+        name,
         category,
         picture,
         description,
         size,
         color} = req.body
         const newProduct = new productModel({
+            name,
             category,
             likes:0,
             rate:0,

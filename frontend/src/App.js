@@ -16,43 +16,65 @@ import { VscHeartFilled } from "react-icons/vsc";
 import { FaHeart ,FaSearch } from "react-icons/fa";
 import { SlBasket } from "react-icons/sl";
 import { BsPersonCircle } from "react-icons/bs";
+import Categories from './components/role 2 interface/Categories';
+import Category from './components/role 2 interface/Categories';
+import Product1 from './components/role 2 interface/Product1';
+//........
+import { Cloudinary } from '@cloudinary/url-gen';
+import { auto } from '@cloudinary/url-gen/actions/resize';
+import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
+import { AdvancedImage } from '@cloudinary/react';
 
 
   export const userContext = createContext()
 const App = () => {
+ 
 
-  const [userInfo,setUserInfo] = useState({})
-
+  const [loginInfo,setLogin] = useState({})
+const [isLogin,setIsLogIn] =useState(false)
   const [isRegister,setRegister] =useState(false)
   const [token,setToken] = useState(localStorage.getItem("token"))
   const [resultMessage,setResultMessage] = useState("")
   //use spread 
   //state for [card,favorite,payload information] 
   console.log(isRegister);
+  console.log(loginInfo);
+  
   
   return (
 //email,pass, userName ,we send card,fav=>[] ==>send with axios to back check 
-  <userContext.Provider value={{token,setToken,isRegister,setRegister,userInfo,setUserInfo,resultMessage,setResultMessage}} >
+  <userContext.Provider value={{setIsLogIn,loginInfo,setLogin,token,setToken,isRegister,setRegister,resultMessage,setResultMessage}} >
   <div className="App">
     <header>
       <ul className='headerList'>
-        <li><Link className='headerIcon' to="/favoriteList" ><FaHeart /></Link></li>
+        <li><Link  className='headerIcon' to="/favoriteList" ><FaHeart /></Link></li>
         <li><Link  className='headerIcon' to="/cardList"><SlBasket /></Link></li>
       </ul>
       <h2><Link to="/">Camelia Store</Link></h2>
       <span><input></input><FaSearch /></span>
-      <span>{!isRegister&&<Link className='headerIcon' to="/register" ><BsPersonCircle />create Account</Link> }<Link  to="/login" >Login</Link></span>
+      <span>{!isRegister&&<Link className='headerIcon' to="/register" ><BsPersonCircle />create Account</Link> }
+      {!isLogin?<Link  to="/login" >Login</Link>:loginInfo.userName}</span>
     </header>
     
   
     {/* build roters */}
     <Routes>
-      <Route path="/" element={<Home/>} /> 
+      
+            
+        
+      <Route path="/" element={<Home/>} /> {/* have routes of category,footer */}
       <Route path="/login" element={<Login/>} />
       <Route path="/register" element={<Register/>} />
       <Route path="/favoriteList" element={<FavoriteCard/>} />
       <Route path="/cardList" element={<Card/>}/>
+      
+   <Route path='/categories' element={<Categories/>}/>
+      <Route path='/categories/:name' element={<Category/>}/>
+      <Route path='/categories/:name/product=name' element={<Product1/>}/> 
+
+
       <Route path="*" element={<Notfound/>}/>
+      <Route path=''/>
       {/* path for every category  */}
     </Routes>
   
@@ -60,6 +82,7 @@ const App = () => {
     </userContext.Provider>
   )
 }
+//categories =>category =>single product
 /* routes 
 Home =>navbar(home,login,register,title,favList,card,search bar),categories,otherServices,meet our worker ,aboutUs,footer"/".
 

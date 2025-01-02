@@ -4,14 +4,13 @@ import { useState } from 'react'
 import Home from './Home'
 import { useContext } from 'react'
 import { userContext } from '../../App'
-import Link, { Navigate } from 'react-router-dom'
+import Link, { useNavigate } from 'react-router-dom'
 
 
 const Login = () => {
+  const Navigate = useNavigate()
+  const {token,setToken,resultMessage,setResultMessage,loginInfo,setLogin,setIsLogIn} = useContext(userContext)
 
-  const {token,resultMessage,setResultMessage} = useContext(userContext)
-  const [logInValue,setLogInValue] =useState(false)
-  const [loginInfo,setLogin] = useState({})
 
   const logInFunction = ()=>{
     console.log(loginInfo.email,loginInfo.password);
@@ -20,12 +19,19 @@ const Login = () => {
       password:loginInfo.password
     })
     .then((result)=>{
+      console.log(result.data.user.username);
+      setToken(result.data.token)
+      setLogin({...loginInfo,userName:result.data.user.username})
+      setIsLogIn(true)
+     
+      
       setResultMessage(result.data.message)
       Navigate('/') 
-      setLogInValue(true)
+
     })
     .catch((error)=>{
       console.log(33);
+      console.log(error);
     console.log(error.response.data.message);
       setResultMessage(error.response.data.message) 
     })
@@ -35,7 +41,7 @@ const Login = () => {
   //if logout =>isregister =>false
 
   return (
-    <div>{!logInValue?<div><label htmlFor="email">email </label><input itemID="email" name="email" type="email"
+    <div><div><label htmlFor="email">email </label><input itemID="email" name="email" type="email"
       onChange={(e)=>{
         setLogin({...loginInfo,email:e.target.value})
       }} placeholder='userName'/><br/><br/>
@@ -47,8 +53,7 @@ const Login = () => {
       <button onClick={()=>{
         logInFunction()
       }}>Submit</button><br/><br/>
-      <p>{resultMessage}</p></div>:<></>}
-      
+      <p>{resultMessage}</p></div>
     </div>
   )
 }
