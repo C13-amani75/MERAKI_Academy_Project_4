@@ -24,7 +24,7 @@ axios.get("http://localhost:5000/category")
         console.log(element);
         
         return <button key={i} onClick={()=>{
-          console.log(element);
+          console.log(element.name);
           
           Navigate(`/category/${element._id}/categoryName?name=${element.name}`)
 

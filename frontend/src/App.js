@@ -92,7 +92,7 @@ console.log(data);
       
    <Route path='/categories' element={<Categories/>}/>
       <Route path='/category/:id/categoryName' element={<Category/>}/>
-      <Route path='/categories/:name/category' element={<Product1/>}/> 
+      <Route path='/categories/category/:name/:id' element={<Product1/>}/> 
       <Route path="*" element={<Notfound/>}/>
       {/* path for every category  */}
     </Routes>
