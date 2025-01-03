@@ -91,8 +91,8 @@ console.log(data);
       <Route path="/cardList" element={<Card/>}/>
       
    <Route path='/categories' element={<Categories/>}/>
-      <Route path='/category/:id' element={<Category/>}/>
-      <Route path='/categories/:name/product=name' element={<Product1/>}/> 
+      <Route path='/category/:id/categoryName' element={<Category/>}/>
+      <Route path='/categories/:name/category' element={<Product1/>}/> 
       <Route path="*" element={<Notfound/>}/>
       {/* path for every category  */}
     </Routes>

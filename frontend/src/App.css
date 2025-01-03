@@ -24,7 +24,18 @@ Link{
   
   text-decoration: none;
 }
-
+.categoriesPage{
+  display: flex;
+  width:100%;
+  height: 50%;
+}
+.category{
+  width:15px;
+}
+.categoryImage{
+  width:20px;
+  height: 20px;
+}
 
 
 

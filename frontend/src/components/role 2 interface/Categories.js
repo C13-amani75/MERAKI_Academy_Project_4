@@ -8,7 +8,6 @@ useEffect(()=>{
 
 axios.get("http://localhost:5000/category")
   .then((result)=>{
-    console.log(result.data.result);
     setCategories(result.data.result)
   })
   .catch((error)=>{
@@ -20,16 +19,16 @@ axios.get("http://localhost:5000/category")
     //pass _id of category as params  to category 
     //useEffect to render the products that hold this category_id (use params hooks)
     //from category if click on product pass product info to in changeable state to (category parent component) product component(child) 
-    <div>
+    <div className='categoriesPage'>
       {categories.map((element,i)=>{
         console.log(element);
         
         return <button key={i} onClick={()=>{
-          console.log(element._id);
+          console.log(element);
           
-          Navigate(`/category/${element._id}`)
+          Navigate(`/category/${element._id}/categoryName?name=${element.name}`)
 
-        }}><img key={i} src={element.image}/>
+        }}><img className='categoryImage' key={i} src={element.image}/>
         <p>{element.name}</p>
         
         </button>
