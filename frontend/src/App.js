@@ -57,6 +57,7 @@ console.log(data);
   return (
 //email,pass, userName ,we send card,fav=>[] ==>send with axios to back check 
   <userContext.Provider value={{setIsLogIn,loginInfo,setLogin,token,setToken,isRegister,setRegister,resultMessage,setResultMessage}} >
+  <div class="container-fluid">
   <div className="App">
     <header>
       <ul className='headerList'>
@@ -69,13 +70,13 @@ console.log(data);
       {!isLogin?<Link className='link'  to="/login" >Login</Link>:loginInfo.userName}</span>
     </header>
 
-{/*     <div>
+   <div>
 <input type="file" onChange= {(e)=> setImage(e.target.files[0])}></input>
 <button onClick={uploadImage}>Upload</button>
 </div>
 <div>
 <img src={url}/>
-</div> */}
+</div> 
     
   
     {/* build roters */}
@@ -95,7 +96,8 @@ console.log(data);
       <Route path="*" element={<Notfound/>}/>
       {/* path for every category  */}
     </Routes>
-  
+    
+    </div>
     </div>
     </userContext.Provider>
   )

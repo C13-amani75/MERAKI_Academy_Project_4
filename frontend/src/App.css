@@ -28,7 +28,7 @@
   padding:0;
   margin:0;
   display: grid;
-  grid-template-rows: 1fr auto 2fr;
+  grid-template-rows: 10% auto ;
 }
 header{
   padding: 1%;
@@ -88,6 +88,8 @@ font-size: 2rem;
 /* ............header.............. */
 
 .categoriesPage{
+  
+  margin-top: 5%;
   background-color: #e9f1e9;
   border: #92140c 1px solid;
   
@@ -100,15 +102,16 @@ font-size: 2rem;
 }
 .categoryElement{
   cursor: pointer;
- 
   color: #151615;
   font-size: 15px;
   text-indent: .5px;
   font-weight: 500;
   font-family: "Edu AU VIC WA NT Pre", serif;
   max-width: auto;
-  border: transparent;
-  
+  border: transparent; 
+}
+.categoryElement:hover{
+  border: 12px solid white;
 }
 .categoryImage{
   border: 2px solid white;
@@ -117,6 +120,7 @@ font-size: 2rem;
   height: 50%;
 }
 /* ...........categoriesPage.............. */
+
 
 
 
