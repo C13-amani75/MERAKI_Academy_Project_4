@@ -17,19 +17,13 @@ import { FaHeart ,FaSearch } from "react-icons/fa";
 import { SlBasket } from "react-icons/sl";
 import { BsPersonCircle } from "react-icons/bs";
 import Categories from './components/role 2 interface/Categories';
-import Category from './components/role 2 interface/Categories';
+import Category from './components/role 2 interface/Category';
 import Product1 from './components/role 2 interface/Product1';
 //........
-import { Cloudinary } from '@cloudinary/url-gen';
-import { auto } from '@cloudinary/url-gen/actions/resize';
-import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
-import { AdvancedImage } from '@cloudinary/react';
 
 
   export const userContext = createContext()
 const App = () => {
- 
-
   const [loginInfo,setLogin] = useState({})
 const [isLogin,setIsLogIn] =useState(false)
   const [isRegister,setRegister] =useState(false)
@@ -39,8 +33,27 @@ const [isLogin,setIsLogIn] =useState(false)
   //state for [card,favorite,payload information] 
   console.log(isRegister);
   console.log(loginInfo);
+  const [image, setImage ] = useState("");//hold image to uploaded 
+  console.log(image);
   
-  
+const [ url, setUrl ] = useState("");//url image after uploaded 
+const uploadImage = () => { //
+const data = new FormData()// create key value pairs for data to send to the server
+data.append("file", image) //we append on formData we append image to data 
+data.append("upload_preset", "ecommerce")
+data.append("cloud_name","drhlmb3qr")
+fetch("  https://api.cloudinary.com/v1_1/drhlmb3qr/image/upload",{
+method:"post",
+body: data
+})
+.then(resp => resp.json()) //convert response to json 
+.then(data => {
+setUrl(data.url) //set data to url by using setUrl
+console.log(data);
+
+})
+.catch(err => console.log(err))
+}
   return (
 //email,pass, userName ,we send card,fav=>[] ==>send with axios to back check 
   <userContext.Provider value={{setIsLogIn,loginInfo,setLogin,token,setToken,isRegister,setRegister,resultMessage,setResultMessage}} >
@@ -55,6 +68,15 @@ const [isLogin,setIsLogIn] =useState(false)
       <span>{!isRegister&&<Link className='headerIcon' to="/register" ><BsPersonCircle />create Account</Link> }
       {!isLogin?<Link  to="/login" >Login</Link>:loginInfo.userName}</span>
     </header>
+
+    <div>
+<input type="file" onChange= {(e)=> setImage(e.target.files[0])}></input>
+<button onClick={uploadImage}>Upload</button>
+</div>
+<div>
+<h1>Uploaded image will be displayed here</h1>
+<img src={url}/>
+</div>
     
   
     {/* build roters */}
@@ -69,12 +91,9 @@ const [isLogin,setIsLogIn] =useState(false)
       <Route path="/cardList" element={<Card/>}/>
       
    <Route path='/categories' element={<Categories/>}/>
-      <Route path='/categories/:name' element={<Category/>}/>
+      <Route path='/category/:id' element={<Category/>}/>
       <Route path='/categories/:name/product=name' element={<Product1/>}/> 
-
-
       <Route path="*" element={<Notfound/>}/>
-      <Route path=''/>
       {/* path for every category  */}
     </Routes>
   

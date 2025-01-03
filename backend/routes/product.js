@@ -39,6 +39,8 @@ http://localhost:5000/product/update/:id
 get:
 http://localhost:5000/product/
 http://localhost:5000/product/:id
+get product of specific category 
+http://localhost:5000/product/category/:id
 
 
 
