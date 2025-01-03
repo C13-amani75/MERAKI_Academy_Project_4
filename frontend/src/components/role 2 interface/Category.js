@@ -24,6 +24,11 @@ const Category = () => {
       
 
     })
+    .catch((error)=>{
+      console.log(error);
+      
+
+    })
 
 
   },[])

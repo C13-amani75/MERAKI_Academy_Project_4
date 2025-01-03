@@ -21,9 +21,7 @@ axios.get("http://localhost:5000/category")
     //from category if click on product pass product info to in changeable state to (category parent component) product component(child) 
     <div className='categoriesPage'>
       {categories.map((element,i)=>{
-        console.log(element);
-        
-        return <button key={i} onClick={()=>{
+        return <button className='categoryElement' key={i} onClick={()=>{
           console.log(element.name);
           
           Navigate(`/category/${element._id}/categoryName?name=${element.name}`)

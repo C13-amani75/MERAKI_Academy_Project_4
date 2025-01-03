@@ -1,41 +1,122 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+:root{
+  --pag:#adb5bd;
+  --darkerPage:#a37774;
+  --lightPag:#e9f1e9;
+  --gray:#343a40;
+  --meduimGray:#343a40;
+  --black:black;
+  --darkBrown:#92140c;
+
+  /* colors */
+}
+#root{
+  height: 100vh;
+}
 .App {
+  display: grid;
+  grid-template-rows: 2fr 10fr;
+  color: white;
+  background-color: var(--gray);
   font-size: 20px;
   text-align: center;
   padding:0;
   margin:0;
-  box-sizing: border-box;
+  display: grid;
   grid-template-rows: 1fr auto 2fr;
 }
-:root{
-  --black:black;
-
-  /* colors */
-}
 header{
+  padding: 1%;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+font-weight: 800;
+  color: black;
+  font-size: 18px;
   display: flex;
-  justify-content: space-around;
+  
+  background-color: var(--darkerPage);
+  justify-content: space-evenly;
+}
+.main{
+  height: 100vh;
+}
+.link{
+  color:var(--meduimGray);
+  text-decoration: none;
+
 }
 .headerList{
+  color: black;
   list-style: none;
   display: flex;
+  gap: 70%;
   justify-content: space-between;
 }
-Link{
-  
-  text-decoration: none;
+.headerIcon{
+font-size: 2rem;
+  color: #343a40;
 }
-.categoriesPage{
+.registerSection{
   display: flex;
-  width:100%;
-  height: 50%;
+  gap: 20%;
+  font-weight: 800;
 }
-.category{
-  width:15px;
+.searchInput{
+
+  background-color: transparent;
+  border-radius: 40%;
+  border: var(--darkerPage);
+  height: 80%;
+  width: 30%;
+}
+.search{
+ background-color: transparent;
+  border: 3px solid var(--lightPag);
+  width: 90%;
+  height: 100%;
+}
+.searchSign{
+  color: #e9f1e9;
+ width: 10%;
+ font-size: 1.5rem;
+}
+/* ............header.............. */
+
+.categoriesPage{
+  background-color: #e9f1e9;
+  border: #92140c 1px solid;
+  
+  
+  display: flex;
+  justify-content: center;
+  gap: 6%;
+  width:100%;
+  max-height: 100%;
+}
+.categoryElement{
+  cursor: pointer;
+ 
+  color: #151615;
+  font-size: 15px;
+  text-indent: .5px;
+  font-weight: 500;
+  font-family: "Edu AU VIC WA NT Pre", serif;
+  max-width: auto;
+  border: transparent;
+  
 }
 .categoryImage{
-  width:20px;
-  height: 20px;
+  border: 2px solid white;
+  border-radius: 50%;
+  width:10em;
+  height: 50%;
 }
+/* ...........categoriesPage.............. */
 
 
 

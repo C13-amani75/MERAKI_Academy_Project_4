@@ -63,20 +63,19 @@ console.log(data);
         <li><Link  className='headerIcon' to="/favoriteList" ><FaHeart /></Link></li>
         <li><Link  className='headerIcon' to="/cardList"><SlBasket /></Link></li>
       </ul>
-      <h2><Link to="/">Camelia Store</Link></h2>
-      <span><input></input><FaSearch /></span>
-      <span>{!isRegister&&<Link className='headerIcon' to="/register" ><BsPersonCircle />create Account</Link> }
-      {!isLogin?<Link  to="/login" >Login</Link>:loginInfo.userName}</span>
+      <h2><Link className='link' to="/">Camelia Store</Link></h2>
+      <span className='searchInput'><input className='search' ></input><FaSearch className='searchSign' /></span>
+      <span className='registerSection'>{!isRegister&&<Link className='link' to="/register" > <BsPersonCircle /> sign Up</Link> }
+      {!isLogin?<Link className='link'  to="/login" >Login</Link>:loginInfo.userName}</span>
     </header>
 
-    <div>
+{/*     <div>
 <input type="file" onChange= {(e)=> setImage(e.target.files[0])}></input>
 <button onClick={uploadImage}>Upload</button>
 </div>
 <div>
-<h1>Uploaded image will be displayed here</h1>
 <img src={url}/>
-</div>
+</div> */}
     
   
     {/* build roters */}

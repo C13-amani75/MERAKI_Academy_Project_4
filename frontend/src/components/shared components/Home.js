@@ -2,10 +2,14 @@ import React from 'react'
 
 import Footer from './Footer'
 import Categories from '../role 2 interface/Categories'
+import Services from './Services'
+import Worker from './Worker'
 const Home = () => {
   return (
-    <div>
+    <div className='main'>
       <Categories/>
+      <Services/>
+      <Worker/>
       <Footer/>
 
     </div>
