@@ -6,10 +6,10 @@
 }
 :root{
   --pag:#adb5bd;
-  --darkerPage:#a37774;
+  --darkerPage:#949493;
   --lightPag:#e9f1e9;
   --gray:#343a40;
-  --meduimGray:#343a40;
+  --meduimGray:#949493;
   --black:black;
   --darkBrown:#92140c;
 
@@ -44,6 +44,7 @@ font-weight: 800;
 }
 .main{
   height: 100vh;
+  width: 100%;
 }
 .link{
   color:var(--meduimGray);
@@ -88,17 +89,14 @@ font-size: 2rem;
 /* ............header.............. */
 
 .categoriesPage{
-  
   margin-top: 5%;
   background-color: #e9f1e9;
   border: #92140c 1px solid;
-  
-  
   display: flex;
-  justify-content: center;
-  gap: 6%;
+ 
+  gap: 3%;
   width:100%;
-  max-height: 100%;
+  
 }
 .categoryElement{
   cursor: pointer;
@@ -107,7 +105,7 @@ font-size: 2rem;
   text-indent: .5px;
   font-weight: 500;
   font-family: "Edu AU VIC WA NT Pre", serif;
-  max-width: auto;
+  max-width: 10%;
   border: transparent; 
 }
 .categoryElement:hover{
@@ -120,8 +118,37 @@ font-size: 2rem;
   height: 50%;
 }
 /* ...........categoriesPage.............. */
+.category{
+  height: 100vh;
+  display: flex;
+ /*  grid-template-columns:; */
+}
+.categoryElement{
+  width: 320px;
+  height: 320px;
+}
+.singleImage{
+  width: 120px;
+  height: 120px;
+}
+/* --page of each category--- */
+
+.productPage{
+  height: 100vh;
+}
+.slide{
+  height: 50%;
+}
+.heart{
+  cursor: pointer;
+  position: relative;
+  top: 15%;
+  z-index: 2;
+  right: 40%;
+}
 
 
+/* --page of each product--- */
 
 
 

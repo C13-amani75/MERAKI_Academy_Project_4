@@ -66,8 +66,8 @@ console.log(data);
       </ul>
       <h2><Link className='link' to="/">Camelia Store</Link></h2>
       <span className='searchInput'><input className='search' ></input><FaSearch className='searchSign' /></span>
-      <span className='registerSection'>{!isRegister&&<Link className='link' to="/register" > <BsPersonCircle /> sign Up</Link> }
-      {!isLogin?<Link className='link'  to="/login" >Login</Link>:loginInfo.userName}</span>
+      <span className='registerSection'>{!isRegister&&<Link className='link register' to="/register" > <BsPersonCircle />sign Up</Link> }
+      {!isLogin?<Link className='link register'  to="/login" >|Login</Link>:loginInfo.userName}</span>
     </header>
 
    <div>

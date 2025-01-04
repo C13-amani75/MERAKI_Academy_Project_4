@@ -35,5 +35,6 @@ axios.get("http://localhost:5000/category")
     </div>
   )
 }
+//----------Done---------------------------
 
 export default Categories

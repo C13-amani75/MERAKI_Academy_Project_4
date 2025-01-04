@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 //............Admin features...........................
 const addProduct = (req,res)=>{//Done
     const {
+        price,
         name,
         category,
         picture,
@@ -13,6 +14,7 @@ const addProduct = (req,res)=>{//Done
         size,
         color} = req.body
         const newProduct = new productModel({
+            price,
             name,
             category,
             likes:0,
@@ -153,7 +155,7 @@ const addTOCard = (req,res)=>{ //Done
     .then((result)=>{
         if(!result){
             console.log(result);
-            
+            //get quantity and check in bend not frontend //send meesage on status of the code 
             userModel.findByIdAndUpdate({_id:userId},{$push:{card:id}})
             .then((result)=>{
                 res.json(result)

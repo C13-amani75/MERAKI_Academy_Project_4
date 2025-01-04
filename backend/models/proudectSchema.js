@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
+    price:{
+        type:Number
+
+    },
     category:
        {type: mongoose.Schema.Types.ObjectId,ref:"category"}/* {type: mongoose.Schema.Types.ObjectId,ref:"category"} */
     ,

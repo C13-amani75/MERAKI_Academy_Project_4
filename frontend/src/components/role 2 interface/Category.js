@@ -19,7 +19,7 @@ const Category = () => {
     
     axios.get(`http://localhost:5000/product/category/${id}`)
     .then((result)=>{
-      console.log(result.data);
+      console.log("product of specific category",result.data);
       setCategoryProduct(result.data)
       
 
@@ -41,13 +41,15 @@ const Category = () => {
     <div className='category'>
       
       {categoryProduct.map((element,i)=>{
-        console.log(element);
-      return  <button onClick={()=>{
+        console.log("single pro",element);
+      return  <button className='categoryElement' onClick={()=>{
         Navigate(`/categories/category/${categoryName}/${element._id}`)
         
-      }} key={i} className='categoryElement'>
-        <img src={element.picture[0]}/>
+      }} key={i} >
+        <img className='singleImage' src={element.picture[0]}/>
         <p>{element.name}</p>
+        <p>{element.description}</p>
+        <h3>Price:{element.price} JOD</h3>
       </button>
       })}
     </div>

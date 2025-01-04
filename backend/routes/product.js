@@ -19,6 +19,7 @@ productRouter.delete("/delete/:id",deleteProductById)
 productRouter.put("/update/:id",updateProduct)
 productRouter.get("/", getAllProducts)
 productRouter.get("/:id", getProductsById)
+//--------------------------------
 productRouter.put("/card/:id",authentication,addTOCard)
 productRouter.get("/card/:id",getCardByUserId)
 productRouter.delete("/card/:id",authentication,deleteFromCardByproductId)
