@@ -149,27 +149,26 @@ const addTOCard = (req,res)=>{ //Done
         userModel.findOneAndUpdate({"card.element":id},{$inc:{'card.$.quantity': quantity }})
         .then((result)=>{
             if(result){
-                res.json({"result":result})
+                res.json({"result":result.card,
+                    message:"the product add to your card"
+                })
             }
             else{
                 userModel.findByIdAndUpdate({_id:req.token.userId},{$push:{card:{element: id, quantity: quantity}}})
                 .then((result)=>{
-                    res.json(result)
-
+                    res.json({"result":result.card,
+                        message:"the product add to your card"
+                    })
                 })
                 .catch((err)=>{
                     res.json(err)
-
                 })
             }
-                
         })
         .catch((err)=>{
             res.json({"err":err})
         })
-  
-    
-   /*  console.log(userId);
+/*  console.log(userId);
     
     console.log(userId,id) */
     //find by id the user 
@@ -233,7 +232,7 @@ const addToFav = (req,res)=>{ //Done
     console.log(userId,id)
     userModel.findOne({favoriteList:id})
     .then((result)=>{
-        if(!result){
+         if(!result){
             console.log(result);
             
             userModel.findByIdAndUpdate({_id:userId},{$push:{favoriteList:id}})
@@ -245,8 +244,9 @@ const addToFav = (req,res)=>{ //Done
             res.json({
                 success:false,
                 message:"the product already exist"
-            })
+            }) 
         }
+            
     })
     .catch((result)=>{
         res.json(result)

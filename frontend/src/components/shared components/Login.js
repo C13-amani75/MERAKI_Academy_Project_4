@@ -19,7 +19,7 @@ const Login = () => {
       password:loginInfo.password
     })
     .then((result)=>{
-      console.log(result.data.user.username);
+      console.log(result.data.token);
       setToken(result.data.token)
       setLogin({...loginInfo,userName:result.data.user.username})
       setIsLogIn(true)
@@ -27,6 +27,7 @@ const Login = () => {
       
       setResultMessage(result.data.message)
       Navigate('/') 
+      console.log(token,"tt");
 
     })
     .catch((error)=>{
@@ -52,6 +53,8 @@ const Login = () => {
 }}  placeholder='password'/><br/><br/>
       <button onClick={()=>{
         logInFunction()
+      
+        
       }}>Submit</button><br/><br/>
       <p>{resultMessage}</p></div>
     </div>

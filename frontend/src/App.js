@@ -49,19 +49,16 @@ body: data
 .then(resp => resp.json()) //convert response to json 
 .then(data => {
 setUrl(data.url) //set data to url by using setUrl
-console.log(data);
-
 })
 .catch(err => console.log(err))
 }
   return (
 //email,pass, userName ,we send card,fav=>[] ==>send with axios to back check 
   <userContext.Provider value={{setIsLogIn,loginInfo,setLogin,token,setToken,isRegister,setRegister,resultMessage,setResultMessage}} >
- 
   <div className="App">
     <header>
       <ul className='headerList'>
-        <li><Link  className='headerIcon' to="/favoriteList" ><FaHeart /></Link></li>
+        <li ><Link  className='headerIcon' to="/favoriteList" ><FaHeart /></Link></li>
         <li><Link  className='headerIcon' to="/cardList"><SlBasket /></Link></li>
       </ul>
       <h2><Link className='link' to="/">Camelia Store</Link></h2>

@@ -1,61 +1,82 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams} from 'react-router-dom'
 import axios from 'axios'
 import { FaHeart ,FaSearch } from "react-icons/fa";
 import { SlBasket } from "react-icons/sl";
-//get category name by params 
-//get product by id 
-//save its infos into state
-//add to card
-  // useEffect on Card state will be str
-  //update user card through axios update 
-  // if the product already exist update quantity +1
-  //update the card //if card.element exist update quantity
-  //else add the element to the card 
-
+import { userContext } from '../../App';
+//if the user complete payment process delete the remind number of product in the store 
 const Product = () => {
-
+  const{token} = useContext(userContext)
   //use spread
-  
+  const [isFav,setIsFav]= useState(false)
   const [productPage,setProductPage] = useState({})
   const [pictures,setPictures] =useState([]) 
-  const [isQuantity,setIsQuantity] =useState(false)
   const {name,id} =useParams()
-  const [card,setCard] = useState([])
   const [product,setProduct] = useState({})
-  //push product in the card and use effect on card state if updated update the card in db
-
 /*   console.log(searchParam.get("")); */
-  
+/* {headers: {
+            Authorization: `Bearer ${token}`
+            }} */
   console.log(name,id);
   console.log(product);
   //..........
   useEffect(()=>{
     axios.get(`http://localhost:5000/product/${id}`)
     .then((result)=>{
-      console.log("product info",result.data.result);
       setProductPage(result.data.result)
       setPictures(result.data.result.picture)
-      setCard(result.data.result.card)
     })
     .catch((error)=>{
       console.log(error);
     })
 
   },[])
-  
-  //..........
-    //check if the quantity has value
-      //if is not no updated occur ,if is it,
-      //check if the product already eexist ==>update just quantity
-      //else add it with its quantity 
 
+  //..............addToFavorite.................
+  const favoriteFunction =()=>{
+    axios.post(`http://localhost:5000/product/favorite/${id}`,{
+      "quantity":product.quantity
+    },{headers: {
+      Authorization: `Bearer ${token}`
+      }})
+    .then((response)=>{
+      console.log("buy",response);
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
+  }
 
-  return (
+  const updateCard =()=>{
+    console.log(product.quantity);
     
+    axios.put(`http://localhost:5000/product/card/${id}`,{
+      "quantity":product.quantity
+    },{headers: {
+      Authorization: `Bearer ${token}`
+      }})
+    .then((response)=>{
+      console.log("buy",response);
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
+  }
+  return (
     <div className='productPage'>
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <FaHeart className='heart'/>
+        <span onClick={
+          ()=>{
+            if(!isFav){
+               favoriteFunction()
+               setIsFav(true)
+            }
+            setIsFav(false)
+
+           
+
+          }
+        }><FaHeart className='heart'/></span>
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img class="d-block w-100 singleImage" src= {pictures[0]} alt="First slide"/>
@@ -85,22 +106,19 @@ const Product = () => {
   <p>price:{productPage.description}</p>
   <button onClick={()=>{
     setProduct({...product,element:productPage._id})
-  }} className='card' >Buy</button>
-  <input onChange={(e)=>{
-    if(e.target.value){
-      setIsQuantity(true)
-      setProduct({...product,quantity:e.target.value})
+    if(product.quantity > 0){
+      updateCard()
     }
     
-    
-
-
+  }} className='card' >Buy</button>
+  <label>number of pieces:</label><input onChange={(e)=>{
+    if(e.target.value){
+      setProduct({...product,quantity:e.target.value})
+    }
   }}  type='number'  max={10} min={0}/>
 </div>
-
-
-    </div>
-  )
+</div>
+)
 }
 //three span or loop through color array 
   /* pic

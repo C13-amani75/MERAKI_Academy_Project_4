@@ -13,7 +13,8 @@ const registerFunction = (req,res)=>{   //Done//
                 password,
                 username,
                 role,
-                card 
+                card,
+                favoriteList
             })
             newUser
             .save()

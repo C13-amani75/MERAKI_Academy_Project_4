@@ -2,7 +2,9 @@
 const jwt =require("jsonwebtoken")
 
 const authentication = async(req,res,next)=>{
-    console.log("test") 
+    console.log("test")
+    console.log(req.headers.authorization,"677777777");
+    
     if(req.headers.authorization){
         const token = req.headers.authorization.split(" ").pop()
     try{
@@ -20,8 +22,10 @@ const authentication = async(req,res,next)=>{
         
     }
     else{
-        res.json("forbidden")
-    }}
+        res.json("forbidden111")
+    }
+
+}
 
 
 
