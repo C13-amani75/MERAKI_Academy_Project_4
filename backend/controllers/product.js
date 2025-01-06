@@ -185,6 +185,7 @@ const addTOCard = (req,res)=>{ //Done
 const getCardByUserId = (req,res)=>{//Done
     const {id} =req.params 
     userModel.findById({_id:id})
+    .populate("card.element")
     .then((result)=>{
         if(result){
             if(result.card.length === 0){
@@ -212,7 +213,7 @@ const deleteFromCardByproductId = (req,res)=>{//Done
     const {id} = req.params
     //user id to get card
     const{userId}= req.token
-    userModel.findByIdAndUpdate({_id:userId},{$pull:{card:id}})
+    userModel.findOneAndUpdate({_id:userId},{$pull:{card:{element:id}}})
     .then((result)=>{
         res.json(result)
     })
@@ -232,9 +233,7 @@ const addToFav = (req,res)=>{ //Done
     console.log(userId,id)
     userModel.findOne({favoriteList:id})
     .then((result)=>{
-         if(!result){
-            console.log(result);
-            
+        if(!result){
             userModel.findByIdAndUpdate({_id:userId},{$push:{favoriteList:id}})
             .then((result)=>{
                 res.json(result)
@@ -256,7 +255,10 @@ const addToFav = (req,res)=>{ //Done
 const getFavByUserId = (req,res)=>{//Done
     const {id} = req.params 
     userModel.findById({_id:id})
+    .populate("favoriteList").exec()
     .then((result)=>{
+        
+        
         if(result){
             if(result.favoriteList.length === 0){
                 res.json({
@@ -264,7 +266,7 @@ const getFavByUserId = (req,res)=>{//Done
                 })
             }
             else{
-                res.json({result:result.favoriteList,
+                res.json({result:result,
                 "success":true
             })
             }

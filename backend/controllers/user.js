@@ -17,6 +17,7 @@ const registerFunction = (req,res)=>{   //Done//
                 favoriteList
             })
             newUser
+            .populate("favoriteList")
             .save()
             .then((result)=>{
                 console.log(result,"result");  
@@ -47,7 +48,7 @@ const loginFunction = (req,res)=>{
     const {email,password} = req.body
    //check at first the email without the pass
     userModel.findOne({email:email.toLowerCase()})//check if the email exist ,then if the hashed password is already the same==>async process
-    .populate("role")
+    .populate("role","favoriteList")
     .then(async (result)=>{
         console.log(result);
         
