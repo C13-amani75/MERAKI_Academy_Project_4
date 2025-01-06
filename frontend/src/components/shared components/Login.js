@@ -21,7 +21,7 @@ const Login = () => {
     .then((result)=>{
       console.log(result.data.token);
       setToken(result.data.token)
-      setLogin({...loginInfo,userName:result.data.user.username})
+      setLogin(result.data.user)
       setIsLogIn(true)
      
       
