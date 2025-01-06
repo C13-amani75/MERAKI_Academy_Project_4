@@ -57,7 +57,7 @@ console.log(data);
   return (
 //email,pass, userName ,we send card,fav=>[] ==>send with axios to back check 
   <userContext.Provider value={{setIsLogIn,loginInfo,setLogin,token,setToken,isRegister,setRegister,resultMessage,setResultMessage}} >
-  <div class="container-fluid">
+ 
   <div className="App">
     <header>
       <ul className='headerList'>
@@ -98,7 +98,7 @@ console.log(data);
     </Routes>
     
     </div>
-    </div>
+    
     </userContext.Provider>
   )
 }

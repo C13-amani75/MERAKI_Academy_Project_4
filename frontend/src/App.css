@@ -9,7 +9,7 @@
   --darkerPage:#949493;
   --lightPag:#e9f1e9;
   --gray:#343a40;
-  --meduimGray:#949493;
+  --meduimGray:#343a40;
   --black:black;
   --darkBrown:#92140c;
 
@@ -32,14 +32,11 @@
 }
 header{
   padding: 1%;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-font-weight: 800;
-  color: black;
+  color: rgb(234, 227, 227);
   font-size: 18px;
   display: flex;
   
-  background-color: var(--darkerPage);
+  background-color:#e0e5e9;
   justify-content: space-evenly;
 }
 .main{
@@ -77,7 +74,7 @@ font-size: 2rem;
 }
 .search{
  background-color: transparent;
-  border: 3px solid var(--lightPag);
+  border: 3px solid var(--gray);
   width: 90%;
   height: 100%;
 }
@@ -93,19 +90,22 @@ font-size: 2rem;
   background-color: #e9f1e9;
   border: #92140c 1px solid;
   display: flex;
+  justify-content: center;
  
   gap: 3%;
   width:100%;
   
 }
 .categoryElement{
+  border: #92140c 13px solid;
   cursor: pointer;
   color: #151615;
   font-size: 15px;
   text-indent: .5px;
   font-weight: 500;
+  width: 10rem;
   font-family: "Edu AU VIC WA NT Pre", serif;
-  max-width: 10%;
+
   border: transparent; 
 }
 .categoryElement:hover{
@@ -114,7 +114,7 @@ font-size: 2rem;
 .categoryImage{
   border: 2px solid white;
   border-radius: 50%;
-  width:10em;
+  width:12em;
   height: 50%;
 }
 /* ...........categoriesPage.............. */

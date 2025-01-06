@@ -143,34 +143,43 @@ const addTOCard = (req,res)=>{ //Done
     //onclick getId of that product into url 
     //search in user model 
     //push that is from url into card of that user
-    const {id} = req.params
-    const{userId} = req.token
-    console.log(userId);
+    const {id} = req.params //product id 
+    const {quantity}= req.body
+        //update
+        userModel.findOneAndUpdate({"card.element":id},{$inc:{'card.$.quantity': quantity }})
+        .then((result)=>{
+            if(result){
+                res.json({"result":result})
+            }
+            else{
+                userModel.findByIdAndUpdate({_id:req.token.userId},{$push:{card:{element: id, quantity: quantity}}})
+                .then((result)=>{
+                    res.json(result)
+
+                })
+                .catch((err)=>{
+                    res.json(err)
+
+                })
+            }
+                
+        })
+        .catch((err)=>{
+            res.json({"err":err})
+        })
+  
     
-    console.log(userId,id)
+   /*  console.log(userId);
+    
+    console.log(userId,id) */
     //find by id the user 
     //check if user.card have id 
     //if dont update +push
-    userModel.findOne({card:id})
-    .then((result)=>{
-        if(!result){
-            console.log(result);
-            //get quantity and check in bend not frontend //send meesage on status of the code 
-            userModel.findByIdAndUpdate({_id:userId},{$push:{card:id}})
-            .then((result)=>{
-                res.json(result)
-            })
-        }
-        else{
-            res.json({
-                success:false,
-                message:"the product already exist"
-            })
-        }
-    })
-    .catch((result)=>{
-        res.json(result)
-    })
+    //find use 
+    //from result check if the product already exist in the card 
+    //if it is update the quantity of the product 
+    //else add that product //insert one to the card ==> with its quantity 
+   
 }
 
 //get card of specific id 

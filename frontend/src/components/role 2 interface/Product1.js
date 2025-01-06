@@ -45,29 +45,10 @@ const Product = () => {
   },[])
   
   //..........
- 
     //check if the quantity has value
       //if is not no updated occur ,if is it,
       //check if the product already eexist ==>update just quantity
       //else add it with its quantity 
-     const buyProduct = ()=>{
-      //will check in every click
-       if(isQuantity){
-        if(card.includes(product.element)){
-          console.log(product.element);
-          
-        }
-
-        //if product in the card && isQuantity
-          //update just quantity
-        //not add product
-        
-        
-       }
-     }
-
- 
-
 
 
   return (
@@ -104,8 +85,6 @@ const Product = () => {
   <p>price:{productPage.description}</p>
   <button onClick={()=>{
     setProduct({...product,element:productPage._id})
-    buyProduct()
-
   }} className='card' >Buy</button>
   <input onChange={(e)=>{
     if(e.target.value){
