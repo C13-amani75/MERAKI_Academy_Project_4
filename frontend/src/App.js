@@ -24,14 +24,15 @@ import Product1 from './components/role 2 interface/Product1';
 
   export const userContext = createContext()
 const App = () => {
-  const [loginInfo,setLogin] = useState({})
+  const [userId,setUserId] = useState(localStorage.getItem("userId"))
+  const [loginInfo,setLogin] = useState(localStorage.getItem("userInfo"))
 const [isLogin,setIsLogIn] =useState(false)
   const [isRegister,setRegister] =useState(false)
   const [token,setToken] = useState(localStorage.getItem("token"))
   const [resultMessage,setResultMessage] = useState("")
   //use spread 
   //state for [card,favorite,payload information] 
-  console.log(isRegister);
+
   console.log(loginInfo);
   const [image, setImage ] = useState("");//hold image to uploaded 
   console.log(image);
@@ -54,7 +55,7 @@ setUrl(data.url) //set data to url by using setUrl
 }
   return (
 //email,pass, userName ,we send card,fav=>[] ==>send with axios to back check 
-  <userContext.Provider value={{setIsLogIn,loginInfo,setLogin,token,setToken,isRegister,setRegister,resultMessage,setResultMessage}} >
+  <userContext.Provider value={{userId,setUserId,setIsLogIn,loginInfo,setLogin,token,setToken,isRegister,setRegister,resultMessage,setResultMessage}} >
   <div className="App">
     <header>
       <ul className='headerList'>
@@ -64,7 +65,7 @@ setUrl(data.url) //set data to url by using setUrl
       <h2><Link className='link' to="/">Camelia Store</Link></h2>
       <span className='searchInput'><input className='search' ></input><FaSearch className='searchSign' /></span>
       <span className='registerSection'>{!isRegister&&<Link className='link register' to="/register" > <BsPersonCircle />sign Up</Link> }
-      {!isLogin?<Link className='link register'  to="/login" >|Login</Link>:loginInfo.userName}</span>
+      {!token?<Link className='link register'  to="/login" >|Login</Link>:<span className='name'>{loginInfo} <Link>logout</Link></span>}</span>
     </header>
 
    <div>

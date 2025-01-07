@@ -9,9 +9,7 @@ import Link, { useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const Navigate = useNavigate()
-  const {token,setToken,resultMessage,setResultMessage,loginInfo,setLogin,setIsLogIn} = useContext(userContext)
-
-
+  const {token,setToken,resultMessage,setResultMessage,loginInfo,setLogin,setIsLogIn,userId,setUserId} = useContext(userContext)
   const logInFunction = ()=>{
     console.log(loginInfo.email,loginInfo.password);
     axios.post("http://localhost:5000/users/login",{
@@ -19,12 +17,15 @@ const Login = () => {
       password:loginInfo.password
     })
     .then((result)=>{
-      console.log(result.data.token);
-      setToken(result.data.token)
-      setLogin(result.data.user)
-      setIsLogIn(true)
-     
+      console.log(result.data.token,"id");
+      localStorage.setItem("token",result.data.token)
+      localStorage.setItem("userId",result.data.user._id)
+      console.log(result.data.user.username);
+      localStorage.setItem("userInfo",result.data.user.username) 
+      setLogin(result.data.user.userName)
+      console.log(result.data.user._id);
       
+      setIsLogIn(true)
       setResultMessage(result.data.message)
       Navigate('/') 
       console.log(token,"tt");

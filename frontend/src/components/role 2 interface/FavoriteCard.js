@@ -1,10 +1,13 @@
+
 import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { userContext } from '../../App';
 
 
 const FavoriteCard = () => {
-  const{token} = useContext(userContext)
+  const{token,userId,setUserId} = useContext(userContext)
+  console.log(userId);
+  
   let [favCard,setFavCard] = useState([])
   const {loginInfo} = useContext(userContext)
   //if delete ==>call delete function then ==>useEffect on changable value
@@ -27,10 +30,11 @@ const deleteButton = (id)=>{
     })
 }
   useEffect(()=>{
-    axios.get(`http://localhost:5000/product/favorite/${loginInfo._id}`)
+    console.log(userId);
+    axios.get(`http://localhost:5000/product/favorite/${userId}`)
     .then((response)=>{
-      
-      setFavCard(response.data.result.favoriteList)
+      console.log(response);
+      setFavCard(response.data.result.favoriteList) 
     })
     .catch((error)=>{
       console.log(error);

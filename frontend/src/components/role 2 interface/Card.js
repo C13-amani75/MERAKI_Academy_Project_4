@@ -2,11 +2,13 @@ import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { userContext } from '../../App';
 
+
 const Card = () => {
   //----------------------------------------
   const{token} = useContext(userContext)
   let [cardElement,setCard] = useState([])
-  const {loginInfo} = useContext(userContext)
+  const {loginInfo,userId,setUserId} = useContext(userContext)
+
 
   const deleteButton = (id)=>{
     axios.delete(`http://localhost:5000/product/card/${id}`,{headers: {
@@ -27,7 +29,7 @@ const Card = () => {
   }
 //..........................
   useEffect(()=>{
-    axios.get(`http://localhost:5000/product/card/${loginInfo._id}`)
+    axios.get(`http://localhost:5000/product/card/${userId}`)
     .then((response)=>{
       console.log("rsponse",response);
       setCard(response.data.result)
@@ -40,7 +42,7 @@ const Card = () => {
   return (
   <div className='cardPage'>
   {
-    cardElement?.map((ele,i)=>{
+  cardElement?.map((ele,i)=>{
       console.log(ele.element,ele.quantity)
       return <div>
         <img className='singleImage' src={ele.element.picture[0]}/>
