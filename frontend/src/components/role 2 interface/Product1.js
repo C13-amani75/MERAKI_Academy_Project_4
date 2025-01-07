@@ -64,28 +64,30 @@ const Product = () => {
   }
   return (
     <div className='productPage'>
-      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div id="carouselExampleControls" class="carousel slide productImages" data-ride="carousel">
         <span onClick={
           ()=>{
             if(!isFav){
-               favoriteFunction()
-               setIsFav(true)
+                favoriteFunction()
+                setIsFav(true)
             }
             setIsFav(false)
-
-           
-
           }
         }><FaHeart className='heart'/></span>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100 singleImage" src= {pictures[0]} alt="First slide"/>
+      <img class="d-block w-100  pic" src= {pictures[0]} alt="First slide"/>
+    </div>{pictures.map((ele,i)=>{
+      return <div class="carousel-item ">
+      <img class="d-block w-100 pic" src= {ele} alt="Second slide"/>
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100 singleImage" src= {pictures[1]} alt="Second slide"/>
+
+    })}
+    <div class="carousel-item ">
+      <img class="d-block w-100 pic" src= {pictures[1]} alt="Second slide"/>
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100 singleImage" src= {pictures[2]} alt="Third slide"/>
+    <div class="carousel-item ">
+      <img class="d-block w-100 pic" src= {pictures[2]} alt="Third slide"/>
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -98,24 +100,42 @@ const Product = () => {
   </a>
 </div>
 <div className='info'>
-  <p>category:{name}</p>
-  <p>{productPage.name}</p>
-  <p>{[productPage.color].join(",")}</p>
-  <p>{[productPage.size].join(",")}</p>
-  <p>price:{productPage.price}</p>
+
+  <p className="catName productTitle"> category: {name}</p>
+  <p className='productTitle'>Code: {productPage.name}</p>
+  {/* <p>{[productPage.color].join(",")}</p> */}
+  <p className='productTitle'>sizes: {productPage.size?.map((ele)=>{
+    return <div>
+      <input id={ele} value={ele} name="size" type="radio" onClick={(e)=>{
+      setProduct({...product,size:e.target.value})
+    }}/>
+    <label for={ele}>{ele}</label></div>
+  })}</p>
+  <div className='colors'>
+    {productPage.color?.map((ele)=>{
+      console.log(ele);
+      
+      return <button><img className='colorImage' src={ele}/></button>
+
+    })}
+  </div>
+
+  <p className='price'>price: {productPage.price}$</p>
   <p>price:{productPage.description}</p>
-  <button onClick={()=>{
+  <div className='productButton'><button onClick={()=>{
     setProduct({...product,element:productPage._id})
     if(product.quantity > 0){
       updateCard()
     }
-    
   }} className='card' >Buy</button>
   <label>number of pieces:</label><input onChange={(e)=>{
     if(e.target.value){
       setProduct({...product,quantity:e.target.value})
     }
   }}  type='number'  max={10} min={0}/>
+  
+  
+</div>
 </div>
 </div>
 )

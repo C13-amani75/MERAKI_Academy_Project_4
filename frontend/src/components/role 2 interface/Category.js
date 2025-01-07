@@ -40,17 +40,20 @@ const Category = () => {
   return (
     <div className='category'>
       
+      
       {categoryProduct.map((element,i)=>{
-      return<div className='product' onClick={()=>{
+      return<button className='product' onClick={()=>{
         Navigate(`/categories/category/${categoryName}/${element._id}`)
       }} key={i} >
+        <span></span>
         <img className='singleImage' src={element.picture[0]}/>
-        <p>{element.name}</p>
-        <p>Prettylittlething</p>
-        <p>Beige Halter Neck Column Midaxi Shift Dress</p>
-        <h3>Price:{element.price} JOD</h3>
-      </div>
+        <p className='productCode'>{element.name}</p>
+        <p className='productTitle'>Prettylittlething</p>
+        <p className='productDescription'>Beige Halter Neck Column Midaxi <br/>Shift Dress</p>
+        <p className='price'>Price:{element.price} JOD</p>
+      </button>
       })}
+    
     </div>
   )
 }
