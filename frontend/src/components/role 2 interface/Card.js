@@ -29,7 +29,7 @@ const Card = () => {
   }
 //..........................
   useEffect(()=>{
-    console.log(product);
+    console.log(product,token);
     
     axios.get(`http://localhost:5000/product/card/${userId}`)
     .then((response)=>{

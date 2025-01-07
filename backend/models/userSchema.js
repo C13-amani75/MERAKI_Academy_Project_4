@@ -16,7 +16,11 @@ const userSchema = new mongoose.Schema({
     },
     //cards[{idof product:{{type: mongoose.Schema.Types.ObjectId}},quintity:Number },quntity of the whole products:{Number} [++quintity of every product]]
     card:[ 
-        {element:{type: mongoose.Schema.Types.ObjectId,ref:"product"} , quantity:{type:Number}}
+        {element:{type: mongoose.Schema.Types.ObjectId,ref:"product"} , 
+        quantity:{type:Number},
+        color:{type:String},
+        size:{type:String}
+    }
     ],// id of product
     favoriteList:[{type: mongoose.Schema.Types.ObjectId,ref:"product"}],//id of product
     role:{type: mongoose.Schema.Types.ObjectId,ref:"role"}

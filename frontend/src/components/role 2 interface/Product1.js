@@ -11,6 +11,7 @@ const Product = () => {
   const [isFav,setIsFav]= useState(false)
   const [productPage,setProductPage] = useState({})
   const [pictures,setPictures] =useState([]) 
+  const [sendMessage,setMessage] =useState("ddd")
   const {name,id} =useParams()
   
 /*   console.log(searchParam.get("")); */
@@ -51,7 +52,10 @@ const Product = () => {
     console.log(product.quantity);
     
     axios.put(`http://localhost:5000/product/card/${id}`,{
-      "product":product
+      "quantity":1,
+   "color":"https://res.cloudinary.com/drhlmb3qr/image/upload/v1736263801/pexels-polina-tankilevitch-4728687_yewaho.jpg",
+   "size":"S"
+      
     },{headers: {
       Authorization: `Bearer ${token}`
       }})
@@ -106,7 +110,7 @@ const Product = () => {
   {/* <p>{[productPage.color].join(",")}</p> */}
   <p className='productTitle'>sizes: {productPage.size?.map((ele)=>{
     return <div>
-      <input id={ele} value={ele} name="size" type="radio" onClick={(e)=>{
+      <input  id={ele} value={ele} name="size" type="radio" onClick={(e)=>{
       setProduct({...product,size:e.target.value})
     }}/>
     <label for={ele}>{ele}</label></div>
@@ -115,7 +119,10 @@ const Product = () => {
     {productPage.color?.map((ele)=>{
       console.log(ele);
       
-      return <button><img className='colorImage' src={ele}/></button>
+      return <button><img onClick={()=>{
+        setProduct({...product,color:ele})
+
+      }} className='colorImage' src={ele}/></button>
 
     })}
   </div>
@@ -126,8 +133,14 @@ const Product = () => {
 
   <div className='productButton'><button onClick={()=>{
     setProduct({...product,element:productPage._id})
-    if(product.quantity > 0){
+    if(product.quantity > 0 && product.color && product.size){
       updateCard()
+      console.log(product);
+      setMessage("all your chooses saved correctly")
+      setProduct({})
+    }
+    else{
+      setMessage("you are alomst missed one of these color, size, number of pieces")
     }
   }} className='card' >Buy</button>
   <label>number of pieces:</label><input onChange={(e)=>{
@@ -137,7 +150,9 @@ const Product = () => {
   }}  type='number'  max={10} min={0}/>
   
   
+  
 </div>
+<p>{sendMessage}</p>
 </div>
 </div>
 )

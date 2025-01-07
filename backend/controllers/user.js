@@ -13,11 +13,10 @@ const registerFunction = (req,res)=>{   //Done//
                 password,
                 username,
                 role,
-                card,
-                favoriteList
+                card:[],
+                favoriteList:[]
             })
             newUser
-            .populate("favoriteList")
             .save()
             .then((result)=>{
                 console.log(result,"result");  

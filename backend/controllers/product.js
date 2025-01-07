@@ -144,7 +144,7 @@ const addTOCard = (req,res)=>{ //Done
     //search in user model 
     //push that is from url into card of that user
     const {id} = req.params //product id 
-    const {quantity,size,color,pic}= req.body
+    const {quantity,size,color}= req.body
         //update
         userModel.findOneAndUpdate({"card.element":id},{$inc:{'card.$.quantity': quantity }})
         .then((result)=>{
