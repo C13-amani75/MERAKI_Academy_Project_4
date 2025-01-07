@@ -125,20 +125,19 @@ font-size: 1.5rem;
   border-bottom-right-radius: 10%;
   background-color:  var(--lightPag);
   gap: 3%;
-  width: fit-content;
   height: 60%;
   position: relative;
   justify-content: center;
   display: flex;
-  left: 20%;
+  left: 15%;
   flex-direction: row;
 
   
 }
 .categoryElement{
+  
   border-radius: 10%;
   background-color:  var(--lightBrown);
-  
   cursor: pointer;
   color: #151615;
   font-size: 15px;
@@ -155,7 +154,7 @@ font-size: 1.5rem;
   border: 2px solid white;
   border-radius: 50%;
   width:12em;
-  height: 50%;
+  height: 60%;
 }
 /* ...........categoriesPage.............. */
 .category{

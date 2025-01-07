@@ -6,13 +6,13 @@ import { SlBasket } from "react-icons/sl";
 import { userContext } from '../../App';
 //if the user complete payment process delete the remind number of product in the store 
 const Product = () => {
-  const{token} = useContext(userContext)
+  const{token,product,setProduct} = useContext(userContext)
   //use spread
   const [isFav,setIsFav]= useState(false)
   const [productPage,setProductPage] = useState({})
   const [pictures,setPictures] =useState([]) 
   const {name,id} =useParams()
-  const [product,setProduct] = useState({})
+  
 /*   console.log(searchParam.get("")); */
 /* {headers: {
             Authorization: `Bearer ${token}`
@@ -51,7 +51,7 @@ const Product = () => {
     console.log(product.quantity);
     
     axios.put(`http://localhost:5000/product/card/${id}`,{
-      "quantity":product.quantity
+      "product":product
     },{headers: {
       Authorization: `Bearer ${token}`
       }})
@@ -77,7 +77,8 @@ const Product = () => {
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img class="d-block w-100  pic" src= {pictures[0]} alt="First slide"/>
-    </div>{pictures.map((ele,i)=>{
+    </div>
+    {pictures.map((ele,i)=>{
       return <div class="carousel-item ">
       <img class="d-block w-100 pic" src= {ele} alt="Second slide"/>
     </div>
@@ -100,7 +101,6 @@ const Product = () => {
   </a>
 </div>
 <div className='info'>
-
   <p className="catName productTitle"> category: {name}</p>
   <p className='productTitle'>Code: {productPage.name}</p>
   {/* <p>{[productPage.color].join(",")}</p> */}
@@ -121,7 +121,9 @@ const Product = () => {
   </div>
 
   <p className='price'>price: {productPage.price}$</p>
+
   <p>price:{productPage.description}</p>
+
   <div className='productButton'><button onClick={()=>{
     setProduct({...product,element:productPage._id})
     if(product.quantity > 0){

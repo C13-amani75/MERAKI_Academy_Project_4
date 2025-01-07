@@ -24,6 +24,7 @@ import Product1 from './components/role 2 interface/Product1';
 
   export const userContext = createContext()
 const App = () => {
+  const [product,setProduct] = useState({})
   const [userId,setUserId] = useState(localStorage.getItem("userId"))
   const [loginInfo,setLogin] = useState(localStorage.getItem("userInfo"))
 const [isLogin,setIsLogIn] =useState(false)
@@ -55,7 +56,7 @@ setUrl(data.url) //set data to url by using setUrl
 }
   return (
 //email,pass, userName ,we send card,fav=>[] ==>send with axios to back check 
-  <userContext.Provider value={{userId,setUserId,setIsLogIn,loginInfo,setLogin,token,setToken,isRegister,setRegister,resultMessage,setResultMessage}} >
+  <userContext.Provider value={{product,setProduct,userId,setUserId,setIsLogIn,loginInfo,setLogin,token,setToken,isRegister,setRegister,resultMessage,setResultMessage}} >
   <div className="App">
     <header>
       <ul className='headerList'>

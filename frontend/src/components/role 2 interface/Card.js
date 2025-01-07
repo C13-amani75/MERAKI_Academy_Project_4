@@ -5,7 +5,7 @@ import { userContext } from '../../App';
 
 const Card = () => {
   //----------------------------------------
-  const{token} = useContext(userContext)
+  const{token,product} = useContext(userContext)
   let [cardElement,setCard] = useState([])
   const {loginInfo,userId,setUserId} = useContext(userContext)
 
@@ -29,6 +29,8 @@ const Card = () => {
   }
 //..........................
   useEffect(()=>{
+    console.log(product);
+    
     axios.get(`http://localhost:5000/product/card/${userId}`)
     .then((response)=>{
       console.log("rsponse",response);
@@ -45,8 +47,6 @@ const Card = () => {
   cardElement?.map((ele,i)=>{
       console.log(ele.element,ele.quantity)
       return <div>
-        <img className='singleImage' src={ele.element.picture[0]}/>
-        <p>{ele.element.price}</p>
         <button  onClick={()=>{
           console.log(ele.element._id);
           deleteButton(ele.element._id)
