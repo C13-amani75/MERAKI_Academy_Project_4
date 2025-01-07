@@ -16,11 +16,11 @@ const addProduct = (req,res)=>{//Done
         const newProduct = new productModel({
             price,
             name,
-            category,
+            category, 
+            description,
+            picture,
             likes:0,
             rate:0,
-            picture,
-            description,
             size,
             color
         })

@@ -69,8 +69,8 @@ setUrl(data.url) //set data to url by using setUrl
     </header>
 
    <div>
-<input type="file" onChange= {(e)=> setImage(e.target.files[0])}></input>
-<button onClick={uploadImage}>Upload</button>
+{/* <input type="file" onChange= {(e)=> setImage(e.target.files[0])}></input>
+<button onClick={uploadImage}>Upload</button> */}
 </div>
 <div>
 <img src={url}/>

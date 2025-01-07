@@ -41,16 +41,15 @@ const Category = () => {
     <div className='category'>
       
       {categoryProduct.map((element,i)=>{
-        console.log("single pro",element);
-      return  <button className='categoryElement' onClick={()=>{
+      return<div className='product' onClick={()=>{
         Navigate(`/categories/category/${categoryName}/${element._id}`)
-        
       }} key={i} >
         <img className='singleImage' src={element.picture[0]}/>
         <p>{element.name}</p>
-        <p>{element.description}</p>
+        <p>Prettylittlething</p>
+        <p>Beige Halter Neck Column Midaxi Shift Dress</p>
         <h3>Price:{element.price} JOD</h3>
-      </button>
+      </div>
       })}
     </div>
   )
