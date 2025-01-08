@@ -37,9 +37,10 @@
   grid-template-rows: 10% auto ;
 } */
 /* .............................. */
+
 header{
   flex-wrap: wrap;
-border-bottom: 2px solid white;
+  border-bottom: 2px solid white;
   padding: 1%;
   font-size: 18px;
   display: flex;
@@ -94,14 +95,13 @@ font-size: 2rem;
   color: #151615;
   background-color: transparent;
   border: var(--darkerPage);
- 
   height: 80%;
   width: 30%;
 }
 .search{
   border-radius: 15%;
   color: #151615;
- background-color: transparent;
+  background-color: transparent;
   border: 3px solid var(--gray);
   width: 90%;
   height: 100%;
@@ -119,17 +119,15 @@ font-size: 1.5rem;
 /* ............header.............. */
 .categoriesPage{
   font-family: "Edu AU VIC WA NT Pre", serif;
-  border-top-left-radius: 10%;
-  border-top-right-radius: 10%;
-  border-bottom-left-radius: 10%;
-  border-bottom-right-radius: 10%;
-  background-color:  var(--lightPag);
+  
+ 
   gap: 3%;
   height: 60%;
   position: relative;
   justify-content: center;
   display: flex;
-  left: 15%;
+  left: 20%;
+  right: 20%;
   flex-direction: row;
 
   
@@ -147,9 +145,7 @@ font-size: 1.5rem;
 
   border: transparent; 
 }
- .categoryElement:hover{
-  border: 12px solid white;
-} 
+
 .categoryImage{
   border: 2px solid white;
   border-radius: 50%;
