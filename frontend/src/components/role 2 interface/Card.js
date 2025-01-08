@@ -1,14 +1,26 @@
 import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { userContext } from '../../App';
+import { Link,useNavigate } from 'react-router-dom';
 
 
 const Card = () => {
+  const Navigate = useNavigate()
   //----------------------------------------
   const{token,product} = useContext(userContext)
   let [cardElement,setCard] = useState([])
   const {loginInfo,userId,setUserId} = useContext(userContext)
+  const[total,setTotal] = useState(0)
+useEffect(()=>{
+  const totalPrice = cardElement.reduce((acc,num,i)=>{
+    console.log("acc",acc+ num.element.price *num.quantity);
+    
+    return acc + num.element.price *num.quantity
+  },total)
+  setTotal(totalPrice)
 
+
+},[cardElement])
 
   const deleteButton = (id)=>{
     axios.delete(`http://localhost:5000/product/card/${id}`,{headers: {
@@ -43,18 +55,30 @@ const Card = () => {
   //........................................
   return (
   <div className='cardPage'>
-  {
+
+
+    <div className='productSection'>{
   cardElement?.map((ele,i)=>{
-      console.log(ele.element,ele.quantity)
-      return <div>
+      console.log(ele)
+      return <div className='cardProduct'>
+        
+        <img className='imgCard' src={ele.color}/>
+        <p>{ele.quantity} * {ele.element.price}$</p>
+        <p> price: {ele.quantity * ele.element.price  } $</p>
+
+        <button onClick={()=>{
+          Navigate(`/categories/category/:name/${ele.element._id}`)
+        }}>update</button>
         <button  onClick={()=>{
           console.log(ele.element._id);
           deleteButton(ele.element._id)
         }} >delete from card</button>
       </div>
     })
-  }
-  <p>total</p>
+  }</div>
+  <div className='paymentSection'><p>totalPrice:{total}</p></div>
+  <>allproduct</>
+  
 </div>
   )
 }

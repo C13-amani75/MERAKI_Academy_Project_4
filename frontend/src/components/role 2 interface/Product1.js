@@ -13,6 +13,7 @@ const Product = () => {
   const [pictures,setPictures] =useState([]) 
   const [sendMessage,setMessage] =useState("ddd")
   const {name,id} =useParams()
+  const [isCompleted,setIsCompleted]=useState(false)
   
 /*   console.log(searchParam.get("")); */
 /* {headers: {
@@ -52,9 +53,9 @@ const Product = () => {
     console.log(product.quantity);
     
     axios.put(`http://localhost:5000/product/card/${id}`,{
-      "quantity":1,
-   "color":"https://res.cloudinary.com/drhlmb3qr/image/upload/v1736263801/pexels-polina-tankilevitch-4728687_yewaho.jpg",
-   "size":"S"
+      "quantity":product.quantity,
+      "color":product.color,
+      "size":product.size
       
     },{headers: {
       Authorization: `Bearer ${token}`
@@ -86,7 +87,6 @@ const Product = () => {
       return <div class="carousel-item ">
       <img class="d-block w-100 pic" src= {ele} alt="Second slide"/>
     </div>
-
     })}
     <div class="carousel-item ">
       <img class="d-block w-100 pic" src= {pictures[1]} alt="Second slide"/>
@@ -111,7 +111,10 @@ const Product = () => {
   <p className='productTitle'>sizes: {productPage.size?.map((ele)=>{
     return <div>
       <input  id={ele} value={ele} name="size" type="radio" onClick={(e)=>{
+        console.log(e.target.value);
+        
       setProduct({...product,size:e.target.value})
+
     }}/>
     <label for={ele}>{ele}</label></div>
   })}</p>
@@ -121,7 +124,7 @@ const Product = () => {
       
       return <button><img onClick={()=>{
         setProduct({...product,color:ele})
-
+    
       }} className='colorImage' src={ele}/></button>
 
     })}
@@ -137,7 +140,9 @@ const Product = () => {
       updateCard()
       console.log(product);
       setMessage("all your chooses saved correctly")
-      setProduct({})
+      
+      setIsCompleted(true)
+
     }
     else{
       setMessage("you are alomst missed one of these color, size, number of pieces")

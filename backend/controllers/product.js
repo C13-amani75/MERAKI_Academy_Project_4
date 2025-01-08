@@ -145,12 +145,16 @@ const addTOCard = (req,res)=>{ //Done
     //push that is from url into card of that user
     const {id} = req.params //product id 
     const {quantity,size,color}= req.body
+    console.log("qqqq",quantity);
+    
         //update
-        userModel.findOneAndUpdate({"card.element":id},{$inc:{'card.$.quantity': quantity }})
+        userModel.findOneAndUpdate({"card.element":id,"card.size":size,"card.color":color},{$inc:{'card.$.quantity':quantity }})
         .then((result)=>{
             if(result){
+                console.log(result);
+                
                 res.json({"result":result.card,
-                    message:"the product add to your card"
+                    message:"the product number increase"
                 })
             }
             else{
@@ -178,7 +182,6 @@ const addTOCard = (req,res)=>{ //Done
     //from result check if the product already exist in the card 
     //if it is update the quantity of the product 
     //else add that product //insert one to the card ==> with its quantity 
-   
 }
 
 //get card of specific id 

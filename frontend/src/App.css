@@ -182,6 +182,7 @@ font-size: 1.5rem;
   font-size: 15px;
   text-indent: .5px;
 
+
 }
 /* .product:hover{
   border: 15px solid white;
@@ -189,7 +190,8 @@ font-size: 1.5rem;
 } */
 .singleImage{
  
-
+border-top-left-radius: 2% ;
+border-top-right-radius: 2% ;
   width:100%;
   height: 260px;
 
@@ -266,5 +268,14 @@ font-size: 1.5rem;
 .colors{
   display: flex;
 }
+.cardPage{
+  display: flex;
+
+}
+.imgCard{
+  width: 100px;
+  
+}
+
 
 /* --page of each product--- */
