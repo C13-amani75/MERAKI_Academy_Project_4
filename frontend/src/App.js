@@ -24,6 +24,7 @@ import Product1 from './components/role 2 interface/Product1';
 
   export const userContext = createContext()
 const App = () => {
+    const [isUpdate,setUpdate] =useState(false)
   const [product,setProduct] = useState({})
   const [userId,setUserId] = useState(localStorage.getItem("userId"))
   const [loginInfo,setLogin] = useState(localStorage.getItem("userInfo"))
@@ -56,7 +57,7 @@ setUrl(data.url) //set data to url by using setUrl
 }
   return (
 //email,pass, userName ,we send card,fav=>[] ==>send with axios to back check 
-  <userContext.Provider value={{product,setProduct,userId,setUserId,setIsLogIn,loginInfo,setLogin,token,setToken,isRegister,setRegister,resultMessage,setResultMessage}} >
+  <userContext.Provider value={{isUpdate,setUpdate,product,setProduct,userId,setUserId,setIsLogIn,loginInfo,setLogin,token,setToken,isRegister,setRegister,resultMessage,setResultMessage}} >
   <div className="App">
     <header>
       <ul className='headerList'>
@@ -69,7 +70,7 @@ setUrl(data.url) //set data to url by using setUrl
       {!token?<Link className='link register'  to="/login" >|Login</Link>:<span className='name'>{loginInfo} <Link>logout</Link></span>}</span>
     </header>
 
-   <div>
+  <div>
 {/* <input type="file" onChange= {(e)=> setImage(e.target.files[0])}></input>
 <button onClick={uploadImage}>Upload</button> */}
 </div>

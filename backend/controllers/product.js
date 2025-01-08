@@ -148,7 +148,7 @@ const addTOCard = (req,res)=>{ //Done
     console.log("qqqq",quantity);
     
         //update
-        userModel.findOneAndUpdate({"card.element":id,"card.size":size,"card.color":color},{$inc:{'card.$.quantity':quantity }})
+        userModel.findOneAndUpdate({_id:req.token.userId,"card.element":id,"card.size":size,"card.color":color},{$inc:{'card.$.quantity':quantity }})
         .then((result)=>{
             if(result){
                 console.log(result);
@@ -223,6 +223,33 @@ const deleteFromCardByproductId = (req,res)=>{//Done
     .catch((err)=>{
         res.json(err)
     })
+}
+
+const updateCardElement = (req,res)=>{
+    const {size,quantity,color} = req.body
+    const {id} = req.params //productId
+    
+    console.log( "token",req.token.userId); 
+    console.log(size,quantity,color);
+    
+    
+    if(size && quantity && color){
+        userModel.findOneAndUpdate({_id:req.token.userId,"card.element":id},{"card.$.quantity": quantity,"card.$.size":size,"card.$.color":color})
+        .then((result)=>{
+            res.json({result:result, message:"the product has been updated"})
+
+        })
+        .catch((error)=>{
+            res.json(error)
+
+        })
+    }
+    else{
+        res.json("no updated active happened on product")
+    }
+    
+
+
 }
 
 
@@ -334,4 +361,5 @@ module.exports = {getProductsByCategoryId,
     getCardByUserId,addToFav,
     deleteFromCardByproductId,
     getFavByUserId,deleteFromFavCardByproductId,
+    updateCardElement,
     likeFeature,getAllLikeByProductId}

@@ -7,20 +7,23 @@ import { Link,useNavigate } from 'react-router-dom';
 const Card = () => {
   const Navigate = useNavigate()
   //----------------------------------------
-  const{token,product} = useContext(userContext)
+  const{token,product,setUpdate} = useContext(userContext)
   let [cardElement,setCard] = useState([])
   const {loginInfo,userId,setUserId} = useContext(userContext)
   const[total,setTotal] = useState(0)
+
 useEffect(()=>{
   const totalPrice = cardElement.reduce((acc,num,i)=>{
-    console.log("acc",acc+ num.element.price *num.quantity);
+    console.log("acc",acc+ num.element.price * num.quantity);
     
     return acc + num.element.price *num.quantity
-  },total)
+  },0)
   setTotal(totalPrice)
 
 
 },[cardElement])
+//........update.........
+
 
   const deleteButton = (id)=>{
     axios.delete(`http://localhost:5000/product/card/${id}`,{headers: {
@@ -68,6 +71,7 @@ useEffect(()=>{
 
         <button onClick={()=>{
           Navigate(`/categories/category/:name/${ele.element._id}`)
+          setUpdate(true)
         }}>update</button>
         <button  onClick={()=>{
           console.log(ele.element._id);

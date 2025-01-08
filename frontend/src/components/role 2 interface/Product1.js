@@ -6,7 +6,7 @@ import { SlBasket } from "react-icons/sl";
 import { userContext } from '../../App';
 //if the user complete payment process delete the remind number of product in the store 
 const Product = () => {
-  const{token,product,setProduct} = useContext(userContext)
+  const{token,product,setProduct,isUpdate,setUpdate} = useContext(userContext)
   //use spread
   const [isFav,setIsFav]= useState(false)
   const [productPage,setProductPage] = useState({})
@@ -14,6 +14,7 @@ const Product = () => {
   const [sendMessage,setMessage] =useState("ddd")
   const {name,id} =useParams()
   const [isCompleted,setIsCompleted]=useState(false)
+  const [updateCardValues,setUpdatedCard] =useState({})
   
 /*   console.log(searchParam.get("")); */
 /* {headers: {
@@ -33,6 +34,25 @@ const Product = () => {
     })
 
   },[])
+const updateCardElement = ()=>{
+  //compare btw two values 
+  axios.put(`http://localhost:5000/product/card/update/${id}`,{
+    "size":updateCardValues.size,
+    "color":updateCardValues.color,
+    "quantity":updateCardValues.quantity
+
+  },{headers: {
+    Authorization: `Bearer ${token}`
+    }})
+    .then((result)=>{
+      setUpdate(false)
+      console.log(result);
+
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
+}
 
   //..............addToFavorite.................
   const favoriteFunction =()=>{
@@ -112,8 +132,14 @@ const Product = () => {
     return <div>
       <input  id={ele} value={ele} name="size" type="radio" onClick={(e)=>{
         console.log(e.target.value);
-        
-      setProduct({...product,size:e.target.value})
+        if(!isUpdate){
+          setProduct({...product,size:e.target.value})
+        }
+        else{
+          setUpdatedCard({...updateCardValues,size:e.target.value})
+       
+        }
+      
 
     }}/>
     <label for={ele}>{ele}</label></div>
@@ -123,7 +149,15 @@ const Product = () => {
       console.log(ele);
       
       return <button><img onClick={()=>{
+       /*  setProduct({...product,color:ele}) */
+      if(!isUpdate){
         setProduct({...product,color:ele})
+      }
+      else{
+        setUpdatedCard({...updateCardValues,color:ele})
+      
+      }
+        
     
       }} className='colorImage' src={ele}/></button>
 
@@ -134,7 +168,8 @@ const Product = () => {
 
   <p>price:{productPage.description}</p>
 
-  <div className='productButton'><button onClick={()=>{
+  <div className='productButton'>
+    {!isUpdate?<button onClick={()=>{
     setProduct({...product,element:productPage._id})
     if(product.quantity > 0 && product.color && product.size){
       updateCard()
@@ -142,15 +177,23 @@ const Product = () => {
       setMessage("all your chooses saved correctly")
       
       setIsCompleted(true)
+     
 
     }
     else{
-      setMessage("you are alomst missed one of these color, size, number of pieces")
+      setMessage("you are almost missed one of these color, size, number of pieces")
     }
-  }} className='card' >Buy</button>
+  }} className='card' >Buy</button>:<button
+  onClick={()=>{
+    updateCardElement()
+  }}
+  >update</button>}
   <label>number of pieces:</label><input onChange={(e)=>{
-    if(e.target.value){
+    if(!isUpdate){
       setProduct({...product,quantity:e.target.value})
+    }
+    else{
+      setUpdatedCard({...updateCardValues,quantity:e.target.value})
     }
   }}  type='number'  max={10} min={0}/>
   
