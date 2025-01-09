@@ -29,6 +29,11 @@
   right: 5%;
   width:90%;
   justify-content: center;
+
+}
+.carousel-control-prev-icon , .carousel-control-next-icon{
+  padding: 25%;
+  background-color: var(--black);
  
 }
 .headPage{
@@ -41,7 +46,7 @@
   
 }
 .afterCaregory{
-  border: 3px solid rgb(202, 45, 152);
+  border: #151615 2px solid;
   text-align: center;
   width: 75%;
   height: 30%;
@@ -52,7 +57,7 @@
 }
 .categoriesPage{
   background-color: var(--lightblue);
-  border: 3px solid rgb(202, 45, 152);
+ 
   text-align: center;
   width: 75%;
   height: 30%;
