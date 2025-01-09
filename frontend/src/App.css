@@ -37,6 +37,7 @@
  
 }
 .headPage{
+  
   border: 3px solid rgb(42, 28, 165);
   text-align: center;
   display: flex;
@@ -45,7 +46,44 @@
   
   
 }
+.serviceName{
+  font-weight: 800;
+  font-size: 5rem;
+  position: absolute;
+  top: 40%;
+  color: var(--lightblue);
+
+
+}
+.title1{
+  font-size: 3rem;
+}
+.a1{
+  position: absolute;
+  top:40%;
+  left: 30%;
+}
+.a2{
+  position: absolute;
+  left:15%;
+  font-size: 4.5rem;
+
+}
+.a3{
+  position: absolute;
+  left: 20%;
+}
+.a4{
+  position: absolute;
+  left: 25%;
+}
+.a5{
+  position: absolute;
+  top:35%;
+  left: 15%;
+}
 .afterCaregory{
+  margin-top: 3%;
   border: #151615 2px solid;
   text-align: center;
   width: 75%;
@@ -55,7 +93,13 @@
   right: 10%;
   justify-content: center;
 }
+/* .formPage{
+  display: flex;
+  flex-direction: column;
+  position: ;
+} */
 .categoriesPage{
+  margin-top: 5%;
   background-color: var(--lightblue);
  
   text-align: center;
@@ -70,6 +114,49 @@
 
   
 }
+
+.advantiges{
+  display: flex;
+  gap:1%;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 5%;
+  border-left: 6px solid var(--pag);
+  border-right: 6px solid var(--pag);
+}
+.s1{
+  border-left: 3px solid var(--pag);
+  border-right: 3px solid var(--pag);
+}
+.logo1{
+  color: var(--pag);
+  font-size: 2rem;
+}
+.footer{
+  margin-top: 5%;
+
+  color: var(--white);
+  background-color: var(--black);
+  width: 100%;
+  border: 3px solid red;
+  display: flex;
+  flex-direction: column;
+}
+.footerSs{
+  border: 3px solid rgb(195, 192, 25);
+  display: flex;
+  flex-direction: row;
+}
+.f1{
+  border: #c17a59 9px solid;
+ text-align: left;
+  width:20%;
+  text-indent: 0%;
+  float: right;
+  padding-left: 0%;
+  padding-right: 0%;
+}
+
 
 .w-100{
   width: 400px;
@@ -226,7 +313,7 @@ font-size: 1.5rem;
  /*  grid-template-columns:; */
 }
 .product{
- 
+
   background-color: var(--lightPag);
   margin: 0;
   padding: 0;
@@ -249,7 +336,6 @@ font-size: 1.5rem;
 
 } */
 .singleImage{
- 
 border-top-left-radius: 2% ;
 border-top-right-radius: 2% ;
   width:100%;

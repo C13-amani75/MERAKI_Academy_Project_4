@@ -8,7 +8,8 @@ const HeadHome = () => {
     
     
     
-    <h2 className='title'>Collections</h2>
+    {/* <h2 className='title'>Collections</h2> */}
+    <h1 className='title1'>Collections</h1>
     </div>
   )
 }

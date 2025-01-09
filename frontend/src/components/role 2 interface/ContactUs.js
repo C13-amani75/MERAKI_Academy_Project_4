@@ -23,7 +23,7 @@ export const ContactUs = () => {
   };
 
   return (
-    <form ref={form} onSubmit={sendEmail}>
+    <form className='formPage' ref={form} onSubmit={sendEmail}>
       <label>Name</label>
       <input type="text" name="user_name" />
       <label>Email</label>

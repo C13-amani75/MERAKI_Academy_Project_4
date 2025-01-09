@@ -15,7 +15,6 @@ const Home = () => {
       <HeadHome/>
       <Categories/>
       <AfterCategory/>
-      <ContactUs/>
       <Services/>
       <Worker/>
       <Footer/>
