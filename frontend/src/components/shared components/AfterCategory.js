@@ -12,14 +12,14 @@ const AfterCategory = () => {
     </div>
     <div class="carousel-item">
     <h1 className='serviceName a2'>Creating & Production</h1>
-       <img className='w123'  class="d-block w-100 " src="https://res.cloudinary.com/drhlmb3qr/image/upload/v1736431254/pexels-michael-burrows-7147652_wmq4x9.jpg" alt="Second slide"/>
+      <img className='w123'  class="d-block w-100 " src="https://res.cloudinary.com/drhlmb3qr/image/upload/v1736431254/pexels-michael-burrows-7147652_wmq4x9.jpg" alt="Second slide"/>
     </div>
     <div class="carousel-item">
     <h1 className='serviceName a2'>Creating & Production</h1>
-       <img className='w123'  class="d-block w-100 " src="https://res.cloudinary.com/drhlmb3qr/image/upload/v1736428907/pexels-gustavo-fring-4173281_lbf7rh.jpg" alt="Second slide"/>
+      <img className='w123'  class="d-block w-100 " src="https://res.cloudinary.com/drhlmb3qr/image/upload/v1736428907/pexels-gustavo-fring-4173281_lbf7rh.jpg" alt="Second slide"/>
     </div>
     <div class="carousel-item">
-    <h1 className='serviceName a3'>Help you choose <br/> your style</h1>
+    <h1 className='serviceName a3'>Helping you choose <br/> your style</h1>
       <img  className='w123' class="d-block w-100 " src="https://res.cloudinary.com/drhlmb3qr/image/upload/v1736430414/pexels-thirdman-8485844_cyf8zx.jpg" alt="Third slide"/>
     </div>
     <div class="carousel-item">

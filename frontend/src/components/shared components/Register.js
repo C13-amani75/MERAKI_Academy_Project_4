@@ -5,12 +5,12 @@ import axios from "axios"
 import Login from './Login'
 
 const Register = () => { //Done
-  const styleMessage=()=>{
+ /*  const styleMessage=()=>{
     if(isRegister){
       return {backGroundColor:"green",color:"white"}
     }
     return  {backGroundColor:"red",color:"white"}
-  }
+  } */
   const {setUserInfo,userInfo,setRegister,isRegister,resultMessage,setResultMessage} = useContext(userContext)
   const registerFunction = ()=>{
     const {email,password,userName} = userInfo
@@ -37,7 +37,7 @@ const Register = () => { //Done
   }
   //when click on register now ==>show login ==>if loged in correctly show home 
   return (
-    <>
+    <div className='registerPage'>
     {
     !isRegister&&<div>
       <input type="text" required onChange={(e)=>{
@@ -62,7 +62,7 @@ const Register = () => { //Done
     
     }
     {isRegister&& <Login/>}
-    </>
+    </div>
   )
 }
 

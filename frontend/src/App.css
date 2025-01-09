@@ -1,11 +1,12 @@
 *{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: content-box;
 
 }
 :root{
-  --buttonColor:#450201;
+  --buttonColor:#1c1f20;
+  --buyButton:#800000;
   --pag:#b29d8d;
   --black:#1c1f20;
   --white:#fbfaf9;
@@ -16,6 +17,7 @@
 }
 
 .App{
+  
   border: 3px solid rgb(84, 202, 54);
   background-color: var(--white);
   justify-content: center;
@@ -34,17 +36,26 @@
 .carousel-control-prev-icon , .carousel-control-next-icon{
   padding: 25%;
   background-color: var(--black);
- 
 }
 .headPage{
-  
-  border: 3px solid rgb(42, 28, 165);
+ width: 50%;
+  color: var(--pag);
   text-align: center;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-self: center;
-  
-  
+  text-align: center;
+  position: relative;
+  left: 20%;
+
+}
+.description{
+  font-weight: 600;
+  letter-spacing: .3rem;
+  font-size: 1rem;
+  color: var(--buttonColor);
+ /*  width: 50%; */
+ 
 }
 .serviceName{
   font-weight: 800;
@@ -55,13 +66,35 @@
 
 
 }
+.collection{
+  position: relative;
+  left: 35%;
+  margin-top: 4%;
+  border-bottom: 2px solid var(--black);
+  border-top: 2px solid var(--black);
+
+}
 .title1{
   font-size: 3rem;
+  color: var(--buttonColor);
+  letter-spacing: .7rem;
+  font-family: "Edu AU VIC WA NT Pre", serif;
 }
 .a1{
+  color: var(--black);
   position: absolute;
   top:40%;
   left: 30%;
+}
+.fp{
+  font-size: 1rem;
+  font-weight: 400;
+}
+.submit{
+  margin-top: 3%;
+  background-color: var(--pag);
+  font-size: 1rem;
+  font-weight: 600;
 }
 .a2{
   position: absolute;
@@ -84,7 +117,8 @@
 }
 .afterCaregory{
   margin-top: 3%;
-  border: #151615 2px solid;
+  border-top: 3px solid black;
+
   text-align: center;
   width: 75%;
   height: 30%;
@@ -93,15 +127,10 @@
   right: 10%;
   justify-content: center;
 }
-/* .formPage{
-  display: flex;
-  flex-direction: column;
-  position: ;
-} */
+
 .categoriesPage{
   margin-top: 5%;
   background-color: var(--lightblue);
- 
   text-align: center;
   width: 75%;
   height: 30%;
@@ -116,15 +145,21 @@
 }
 
 .advantiges{
+ 
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
   gap:1%;
   margin-left: 2%;
   margin-right: 2%;
   margin-top: 5%;
   border-left: 6px solid var(--pag);
   border-right: 6px solid var(--pag);
+  justify-content: center;
+
 }
 .s1{
+  width: 22%;
   border-left: 3px solid var(--pag);
   border-right: 3px solid var(--pag);
 }
@@ -133,47 +168,191 @@
   font-size: 2rem;
 }
 .footer{
+  justify-content: center;
   margin-top: 5%;
-
   color: var(--white);
   background-color: var(--black);
   width: 100%;
   border: 3px solid red;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
 }
 .footerSs{
+ 
+  justify-content: center;
   border: 3px solid rgb(195, 192, 25);
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
-.f1{
-  border: #c17a59 9px solid;
- text-align: left;
+.f{
+text-align: left;
   width:20%;
   text-indent: 0%;
   float: right;
   padding-left: 0%;
   padding-right: 0%;
 }
+.f1{
+  margin-right: 10%;
+}
+.formPage{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 
-
+} 
+.linkF{
+  color: #96CEB4;
+}
 .w-100{
   width: 400px;
   height: 500px;
 }
-.description{
-  font-weight: 800;
-  letter-spacing: .5px;
+
+/* ....................Done .................... */
+/* .......header........................ */
+header{
+  padding-top: .5%;
+  font-family: "Edu AU VIC WA NT Pre", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--white);
+  flex-wrap: wrap;
+  font-size: 18px;
+  display: flex;
+  background-color:var(--pag);
+  justify-content: space-evenly;
+}
+.link , .name{
+  margin-top: 2%;
+  color: var(--buttonColor);
+  font-family: "Edu AU VIC WA NT Pre", serif;
+  text-decoration: none;
+  color: #8E1616;
+
+}
+.name{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.headerIcon:hover{
+ 
+  color: #e9f1e9;
+  text-decoration: none;
+}
+.link{
+  color: #800000;
+  text-decoration: none;
+}
+.link:hover{
+  text-decoration: none;
+  color: #e9f1e9;
+}
+.registerSection{
+  border: #567cbd 2px solid;
+
+  font-size: 25px;
+  margin-top: .2%;
+  display: flex;
+  width: 20%;
+  gap: 3%;
+  justify-content: space-between;
+  color: var(--buttonColor);
+
+}
+.name{
   width: 50%;
-  position: relative;
-  left: 30%;
+  border: 2px solid black;
+  display: flex;
+  gap: 20%;
+  
+ 
+
+}
+.log ,.out , .register{
+  color: var(--buttonColor);
+  border: #8E1616  2px solid;
+}
+.registerPage{
+  padding-top: 5%;
+  width: 50%;
+  justify-content: center;
+  background-color: var(--pag);
+  position: absolute;
+  left: 25%;
+  right: 25%;
+}
+
+
+.out{
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--teal);
+}
+
+.register{
+  gap: 10%;
+}
+.headerList{
+  gap: 10%;
+  color: var(--buttonColor);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+.headerIcon{
+  cursor: pointer;
+font-size: 2rem;
+color: var(--buttonColor);
+}
+
+/* ....................... */
+.searchInput{
+  margin-top: 1%;
+  color: #151615;
+  background-color: transparent;
+  width: 35%;
+  height: 80%;
+  padding-left: 0;
+  padding-right: 0%;
+  
+
+}
+.search{
+  border: transparent;
+  width: 80%;
+
+  background-color: transparent;
+}
+
+.searchSign{
+color: #e9f1e9;
+width: 10%;
+font-size: 1.5rem;
+}
+.search:hover{
+  background-color: var(--lightPag);
+}
+
+
+.ht{
+  letter-spacing: .7px;
+  font-size: 3rem;
+  color: var(--buttonColor);
+  letter-spacing: .6rem;
+  font-family: "Edu AU VIC WA NT Pre", serif;
+
 }
 .categoryElement{
-  
-  border: 3px solid rgb(28, 14, 23);
+  border: transparent;
   border-radius: 50%;
-  
+  background-color: transparent;
  /*  border-radius: 40%;
   background-color:  var(--lightBrown);
   cursor: pointer;
@@ -185,13 +364,11 @@
 
   border: transparent;  */
 }
- .categoryImage{
-  
+.categoryImage{
   border-radius: 50%;
   border: 2px solid white;
   width:12em;
   height: 60%;
-  border: 3px solid rgb(202, 45, 152);
 } 
 
 
@@ -208,15 +385,7 @@
 } */
 /* .............................. */
 
-header{
-  flex-wrap: wrap;
-  border-bottom: 2px solid white;
-  padding: 1%;
-  font-size: 18px;
-  display: flex;
-  background-color:var(--lightBrown);
-  justify-content: space-evenly;
-}
+
 .favPage{
   height: 100vh;
   width: 100vh;
@@ -230,60 +399,6 @@ header{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-}
-.link, .name{
-  font-family: "Edu AU VIC WA NT Pre", serif;
-  color:var(--gray);
-  text-decoration: none;
-
-}
-.headerIcon :hover{
-  color: #343a40;
-  text-decoration: none;
-}
-.link:hover{
-  color: #343a40;
-  text-decoration: none;
-}
-.headerList{
-  list-style: none;
-  display: flex;
-  gap: 40%;
-  justify-content: space-between;
-}
-.headerIcon{
-font-size: 2rem;
-  color: #343a40;
-}
-.registerSection{
-  display: flex;
-  gap: 15%;
-  font-weight: 800;
-}
-/* ....................... */
-.searchInput{
-  color: #151615;
-  background-color: transparent;
-  border: var(--darkerPage);
-  height: 80%;
-  width: 30%;
-}
-.search{
-  border-radius: 15%;
-  color: #151615;
-  background-color: transparent;
-  border: 3px solid var(--gray);
-  width: 90%;
-  height: 100%;
-  border-left: #d7ccc8 5px solid;
-}
-.searchSign{
-color: #e9f1e9;
-width: 10%;
-font-size: 1.5rem;
-}
-.search:hover{
-  background-color: var(--lightPag);
 }
 
 /* ............header.............. */
@@ -393,6 +508,7 @@ border-top-right-radius: 2% ;
   top: 9%;
   z-index: 2;
   left: 10%;
+  border: #567cbd 1px solid;
 }
 .productButton{
   display: flex;

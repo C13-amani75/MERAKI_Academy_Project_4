@@ -71,14 +71,17 @@ setUrl(data.url) //set data to url by using setUrl
   <userContext.Provider value={{isUpdate,setUpdate,product,setProduct,userId,setUserId,setIsLogIn,loginInfo,setLogin,token,setToken,isRegister,setRegister,resultMessage,setResultMessage}} >
   <div className="App">
     <header>
+    <h1><Link className='link ' to="/"><span className='ht'>Camelia</span> Store</Link></h1>
+      
+      
+      <span className='searchInput'><input className='search' ></input><FaSearch className='searchSign' /></span>
       <ul className='headerList'>
         <li ><Link  className='headerIcon' to="/favoriteList" ><FaHeart /></Link></li>
         <li><Link  className='headerIcon' to="/cardList"><SlBasket /></Link></li>
       </ul>
-      <h2><Link className='link' to="/">Camelia Store</Link></h2>
-      <span className='searchInput'><input className='search' ></input><FaSearch className='searchSign' /></span>
-      <span className='registerSection'>{!isRegister&&<Link className='link register' to="/register" > <BsPersonCircle />sign Up</Link> }
-      {!token?<Link className='link register'  to="/login" >|Login</Link>:<span className='name'>{loginInfo} <Link>logout</Link></span>}</span>
+      <span className='registerSection'>
+        {!isRegister&&<Link className='link register' to="/register" >signUp </Link> }
+      {!token?<Link className='link register'  to="/login" >|Login</Link>:<span className='name'><span className='log'>{loginInfo}</span><Link className='out'>logout</Link></span>}</span>
     </header>
 
   <div>

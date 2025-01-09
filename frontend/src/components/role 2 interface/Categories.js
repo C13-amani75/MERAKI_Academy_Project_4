@@ -20,6 +20,7 @@ axios.get("http://localhost:5000/category")
     //useEffect to render the products that hold this category_id (use params hooks)
     //from category if click on product pass product info to in changeable state to (category parent component) product component(child) 
     <div className='categoriesPage'>
+      
       {categories.map((element,i)=>{
         return <button className='categoryElement' key={i} onClick={()=>{
           console.log(element.name);

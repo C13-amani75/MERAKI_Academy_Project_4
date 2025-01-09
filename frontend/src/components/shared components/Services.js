@@ -7,7 +7,6 @@ import { LuPackageOpen } from "react-icons/lu";
 import { TbTruckReturn } from "react-icons/tb";
 const Services = () => {
   return (
-    <div>
       <div className='advantiges'>
         <div className='s1'>
           <GrUserWorker className='logo1' />
@@ -33,7 +32,7 @@ const Services = () => {
 <p>At imperdiet dui accumsan sit amet nulla risus est ultricies quis.</p>
 </div>
 </div>
-    </div>
+    
   )
 }
 
