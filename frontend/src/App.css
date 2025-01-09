@@ -5,24 +5,102 @@
 
 }
 :root{
-  --buttonColor:#f6eee5;
-  --brown:#8b7e72;
-  --lightBrown:#a1887f;
-  --lightPag:#d7ccc8;
-  --pag:#efebe9;
-  --fontColor:#efebe9;
-  --gray:#343a40;
-  --meduimGray:#343a40;
-  --black:black;
-  --darkBrown:#92140c;
+  --buttonColor:#450201;
+  --pag:#b29d8d;
+  --black:#1c1f20;
+  --white:#fbfaf9;
+  --lightblue:#c8d9e6;
+  --teal:#567cbd;
+  --navy:#2f4156;
   /* colors */
 }
 
 .App{
-  background-color: var(--lightBrown);
+  border: 3px solid rgb(84, 202, 54);
+  background-color: var(--white);
   justify-content: center;
-  width: 100%;   
+  width: 100%; 
+  text-align: center;  
 }
+.home{
+  border: 3px solid red;
+  position: relative;
+  left: 5%;
+  right: 5%;
+  width:90%;
+  justify-content: center;
+ 
+}
+.headPage{
+  border: 3px solid rgb(42, 28, 165);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  
+  
+}
+.afterCaregory{
+  border: 3px solid rgb(202, 45, 152);
+  text-align: center;
+  width: 75%;
+  height: 30%;
+  position: relative;
+  left: 10%;
+  right: 10%;
+  justify-content: center;
+}
+.categoriesPage{
+  background-color: var(--lightblue);
+  border: 3px solid rgb(202, 45, 152);
+  text-align: center;
+  width: 75%;
+  height: 30%;
+  position: relative;
+  left: 10%;
+  right: 10%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  
+}
+
+.w-100{
+  width: 400px;
+  height: 500px;
+}
+.description{
+  font-weight: 800;
+  letter-spacing: .5px;
+  width: 50%;
+  position: relative;
+  left: 30%;
+}
+.categoryElement{
+  
+  border: 3px solid rgb(28, 14, 23);
+  border-radius: 50%;
+  
+ /*  border-radius: 40%;
+  background-color:  var(--lightBrown);
+  cursor: pointer;
+  color: #151615;
+  font-size: 15px;
+  text-indent: .5px;
+  font-weight: 500;
+  font-family: "Edu AU VIC WA NT Pre", serif;
+
+  border: transparent;  */
+}
+ .categoryImage{
+  
+  border-radius: 50%;
+  border: 2px solid white;
+  width:12em;
+  height: 60%;
+  border: 3px solid rgb(202, 45, 152);
+} 
 
 
 /* .App {
@@ -117,22 +195,8 @@ font-size: 1.5rem;
 }
 
 /* ............header.............. */
-.categoriesPage{
-  font-family: "Edu AU VIC WA NT Pre", serif;
-  
- 
-  gap: 3%;
-  height: 60%;
-  position: relative;
-  justify-content: center;
-  display: flex;
-  left: 20%;
-  right: 20%;
-  flex-direction: row;
 
-  
-}
-.categoryElement{
+/* .categoryElement{
   
   border-radius: 10%;
   background-color:  var(--lightBrown);
@@ -145,13 +209,8 @@ font-size: 1.5rem;
 
   border: transparent; 
 }
+ */
 
-.categoryImage{
-  border: 2px solid white;
-  border-radius: 50%;
-  width:12em;
-  height: 60%;
-}
 /* ...........categoriesPage.............. */
 .category{
   display: flex;
