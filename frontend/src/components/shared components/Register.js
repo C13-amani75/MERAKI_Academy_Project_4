@@ -51,7 +51,7 @@ const Register = () => { //Done
       <input type='email' required onChange={(e)=>{
         setUserInfo({...userInfo,email:e.target.value})
       }}  placeholder='Email'/><br /><br />
-      <button onClick={()=>{
+      <button className='.button1' onClick={()=>{
         console.log(userInfo);
         registerFunction()
         setUserInfo("")

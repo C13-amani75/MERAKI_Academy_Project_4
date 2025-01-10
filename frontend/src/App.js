@@ -80,7 +80,7 @@ setUrl(data.url) //set data to url by using setUrl
         <li><Link  className='headerIcon' to="/cardList"><SlBasket /></Link></li>
       </ul>
       <span className='registerSection'>
-        {!isRegister&&<Link className='link register' to="/register" >signUp </Link> }
+        {!isRegister&& !token ?<Link className='link register' to="/register" >signUp </Link>:""}
       {!token?<Link className='link register'  to="/login" >|Login</Link>:<span className='name'><span className='log'>{loginInfo}</span><Link className='out'>logout</Link></span>}</span>
     </header>
 

@@ -166,7 +166,7 @@ const updateCardElement = ()=>{
 
   <p className='price'>price: {productPage.price}$</p>
 
-  <p>price:{productPage.description}</p>
+  <p ><span className='price'>Details:</span>{productPage.description}</p>
 
   <div className='productButton'>
     {!isUpdate?<button onClick={()=>{
@@ -175,20 +175,17 @@ const updateCardElement = ()=>{
       updateCard()
       console.log(product);
       setMessage("all your chooses saved correctly")
-      
       setIsCompleted(true)
-     
-
     }
     else{
       setMessage("you are almost missed one of these color, size, number of pieces")
     }
-  }} className='card' >Buy</button>:<button
+  }} className=' button1' >Buy</button>:<button
   onClick={()=>{
     updateCardElement()
   }}
   >update</button>}
-  <label>number of pieces:</label><input onChange={(e)=>{
+  <label className='productTitle'> pieces:</label><input onChange={(e)=>{
     if(!isUpdate){
       setProduct({...product,quantity:e.target.value})
     }

@@ -43,14 +43,11 @@ const deleteButton = (id)=>{
   return (
     //map through each id ==>call 
     <div className='favPage'>{ favCard?.map((ele,i)=>{
-      console.log(ele);
-      return <div onClick={()=>{
+      return <div className="fid" onClick={()=>{
         //go to its full page
       }}>
-        <img className='singleImage' src={ele?.picture[0]}/>
-        <button onClick={()=>{
-          console.log(ele._id);
-          
+        <img className='favImage' src={ele?.picture[0]}/>
+        <button className='remove' onClick={()=>{
           deleteButton(ele._id)
         }}>remove from Favorite</button>
       </div>

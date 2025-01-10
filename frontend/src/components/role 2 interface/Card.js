@@ -66,14 +66,14 @@ useEffect(()=>{
       return <div className='cardProduct'>
         
         <img className='imgCard' src={ele.color}/>
-        <p>{ele.quantity} * {ele.element.price}$</p>
-        <p> price: {ele.quantity * ele.element.price  } $</p>
+        <p className='productTitle cI'>{ele.quantity} * {ele.element.price}$</p>
+        <p className='productTitle'> price: {ele.quantity * ele.element.price  } $</p>
 
-        <button onClick={()=>{
+        <button className='remove' onClick={()=>{
           Navigate(`/categories/category/:name/${ele.element._id}`)
           setUpdate(true)
         }}>update</button>
-        <button  onClick={()=>{
+        <button className='remove'  onClick={()=>{
           console.log(ele.element._id);
           deleteButton(ele.element._id)
         }} >delete from card</button>
@@ -81,8 +81,7 @@ useEffect(()=>{
     })
   }</div>
   <div className='paymentSection'><p>totalPrice:{total}</p></div>
-  <>allproduct</>
-  
+
 </div>
   )
 }

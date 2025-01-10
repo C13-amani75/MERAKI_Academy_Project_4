@@ -1,7 +1,7 @@
 *{
   margin: 0;
   padding: 0;
-  box-sizing: content-box;
+  box-sizing: border-box;
 
 }
 :root{
@@ -17,6 +17,7 @@
 }
 
 .App{
+  font-family: "Edu AU VIC WA NT Pre", serif;
   
   border: 3px solid rgb(84, 202, 54);
   background-color: var(--white);
@@ -180,7 +181,6 @@
   
 }
 .footerSs{
- 
   justify-content: center;
   border: 3px solid rgb(195, 192, 25);
   display: flex;
@@ -254,14 +254,15 @@ header{
   color: #e9f1e9;
 }
 .registerSection{
+  float: right;
   border: #567cbd 2px solid;
 
   font-size: 25px;
-  margin-top: .2%;
+  
   display: flex;
   width: 20%;
   gap: 3%;
-  justify-content: space-between;
+  justify-content:end;
   color: var(--buttonColor);
 
 }
@@ -271,14 +272,18 @@ header{
   display: flex;
   gap: 20%;
   
- 
-
+}
+::placeholder{
+  color: black;
 }
 .log ,.out , .register{
   color: var(--buttonColor);
   border: #8E1616  2px solid;
 }
-.registerPage{
+.registerPage, .loginPage{
+  font-weight: 600;
+  font-size: 35px;
+  border-radius: 2%;
   padding-top: 5%;
   width: 50%;
   justify-content: center;
@@ -287,6 +292,21 @@ header{
   left: 25%;
   right: 25%;
 }
+input{
+  border: transparent;
+}
+.button1{
+  
+  border-radius: 3%;
+  width:30%;
+  height: 20%;
+  border: transparent;;
+  background-color: var(--buyButton);
+}
+button:hover{
+  background-color: var(--white);
+}
+
 
 
 .out{
@@ -383,23 +403,82 @@ font-size: 1.5rem;
   grid-template-columns: 1fr;
   grid-template-rows: 10% auto ;
 } */
-/* .............................. */
+/* .............here................. */
 
 
 .favPage{
-  height: 100vh;
-  width: 100vh;
+  gap:3%;
+  border: #800000 7px solid;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-.cardPage{
+
+.fid {
+  border: #008022 4px solid;
+  width: 25%;
+  height: 25rem;
+  display: flex;
+  flex-wrap: wrap ;
+  justify-content: center;
+
+}
+.favImage{
+  border: #c39824 1px solid;
+ width: 100%;
+ height: 75%;
+
+}
+.remove{
+  padding: 2%;
+  font-size: 1.3rem;
+  background-color: var(--navy);
+  letter-spacing: .5px;
+  border: transparent;
+  color: #fbfaf9;
+}
+.remove:hover{
+  background-color: var(--pag);
+}
+/* .cardPage{
   height: 100vh;
   width: 100%;
-}
+} */
 .main{
   min-height: 100vh;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
+.cardPage{
+  border: #24c369 6px solid;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 75% 25%;
+}
+
+.imgCard{
+  border: #222fba 6px solid;
+  width:100%;
+}
+.productSection{
+  gap: 1%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  border: #d54309 6px solid;
+}
+.paymentSection{
+  border: #2aa5c4 6px solid;
+}
+.cardProduct{
+  border: #aea916 6px solid;
+  width:20%;
+}
+
 
 /* ............header.............. */
 
@@ -422,28 +501,25 @@ font-size: 1.5rem;
 .category{
   display: flex;
   flex-wrap: wrap;
-  width:100%;
   padding: 0;
-  justify-content: center; 
+  justify-content: center;
+  gap: 5%; 
  /*  grid-template-columns:; */
 }
 .product{
-
-  background-color: var(--lightPag);
   margin: 0;
   padding: 0;
-  width: 20%;
-  height: 40%;
-  border-radius: 5%;
+  width: 25%;  
+  border: transparent;
+  height: 10%;
   text-align: center;
   margin: 1%;
-  border-radius: 10%;
-  border: transparent;
   cursor: pointer;
   color: #151615;
   font-size: 15px;
   text-indent: .5px;
-
+  text-align: left;
+  background-color: transparent;
 
 }
 /* .product:hover{
@@ -451,10 +527,8 @@ font-size: 1.5rem;
 
 } */
 .singleImage{
-border-top-left-radius: 2% ;
-border-top-right-radius: 2% ;
   width:100%;
-  height: 260px;
+  height: 25rem;
 
 }
 .productCode, .productTitle ,.price{
@@ -464,7 +538,7 @@ border-top-right-radius: 2% ;
   font-style: normal;
 }
 .price ,.productTitle{
-  font-size: 20px;
+  font-size: 1.3rem;
 
 }
 /*  .back{
@@ -496,23 +570,29 @@ border-top-right-radius: 2% ;
 
 }
 
-
+.cI{
+  font-weight: 400;
+}
 
 .slide{
   height: 50%;
 }
 .heart{
-  font-size: 50px;
+  font-size: 250%;
   cursor: pointer;
   position: absolute;
-  top: 9%;
+  top: 7%;
   z-index: 2;
-  left: 10%;
+  left: 5%;
   border: #567cbd 1px solid;
 }
 .productButton{
   display: flex;
   gap: 4%;
+}
+.productPage{
+  background-color: var(--pag);
+  text-align: left;
 }
 .card{
   padding: 2%;
@@ -530,14 +610,14 @@ border-top-right-radius: 2% ;
 .colors{
   display: flex;
 }
-.cardPage{
-  display: flex;
-
+.paymentSection{
+  background-color: var(--pag);
 }
-.imgCard{
+
+/* .imgCard{
   width: 100px;
   
-}
+} */
 
 
 /* --page of each product--- */

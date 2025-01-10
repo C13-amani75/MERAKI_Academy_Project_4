@@ -43,16 +43,18 @@ const Login = () => {
   //if logout =>isregister =>false
 
   return (
-    <div><div><label htmlFor="email">email </label><input itemID="email" name="email" type="email"
+    <div className='loginPage'>
+      <div>
+        <label htmlFor="email">Email:  </label><input itemID="email" name="email" type="email"
       onChange={(e)=>{
         setLogin({...loginInfo,email:e.target.value})
-      }} placeholder='userName'/><br/><br/>
+      }} placeholder='Email'/><br/><br/>
 
-      <label htmlFor="password">passWord </label><input type="password" itemID ='password' name="password"
+      <label htmlFor="password">PassWord: </label><input type="password" itemID ='password' name="password"
       onChange={(e)=>{
         setLogin({...loginInfo,password:e.target.value})
 }}  placeholder='password'/><br/><br/>
-      <button onClick={()=>{
+      <button className='button1' onClick={()=>{
         logInFunction()
       
         
