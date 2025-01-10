@@ -8,14 +8,14 @@ import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import CheckoutForm from './CheckoutForm';
 
-const stripePromise = loadStripe('pk_test_51Qf56tGwWXeXknZRfCRaT2DoYiBm50zk3Wfuc8vp0H8gUJ47p5tV1oCP1spF8IrHUQhP5jO9QyeXH1UPrHFLkOTG00pnwkYRH7');
+/* const stripePromise = loadStripe('pk_test_51Qf56tGwWXeXknZRfCRaT2DoYiBm50zk3Wfuc8vp0H8gUJ47p5tV1oCP1spF8IrHUQhP5jO9QyeXH1UPrHFLkOTG00pnwkYRH7'); */
 const Card = () => {
   const Navigate = useNavigate()
-  const options = {
+ /*  const options = {
     // passing the client secret obtained from the server
     clientSecret: '{{CLIENT_SECRET}}',
   };
-  
+   */
   //----------------------------------------
   const{token,product,setUpdate} = useContext(userContext)
   let [cardElement,setCard] = useState([])
@@ -101,9 +101,9 @@ useEffect(()=>{
     })
   }</div>
   <div className='paymentSection'>
-  <Elements stripe={stripePromise} options={options}>
+{/*   <Elements stripe={stripePromise} options={options}>
       <CheckoutForm />
-    </Elements>
+    </Elements> */}
     <p>totalPrice:{total}</p>
     </div>
 
