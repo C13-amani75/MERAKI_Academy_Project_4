@@ -20,7 +20,7 @@ import { BsPersonCircle } from "react-icons/bs";
 import Categories from './components/role 2 interface/Categories';
 import Category from './components/role 2 interface/Category';
 import Product1 from './components/role 2 interface/Product1';
-
+import Completion from './components/role 2 interface/Completion';
 //........
 
 
@@ -38,6 +38,8 @@ const [isLogin,setIsLogIn] =useState(false)
   const [isRegister,setRegister] =useState(false)
   const [token,setToken] = useState(localStorage.getItem("token"))
   const [resultMessage,setResultMessage] = useState("")
+  
+  
   //use spread 
   //state for [card,favorite,payload information] 
 
@@ -95,7 +97,7 @@ setUrl(data.url) //set data to url by using setUrl
     <Routes>
       
             
-        
+        <Route path="/completion" element={<Completion/>} />
       <Route path="/" element={<Home/>} /> {/* have routes of category,footer */}
       <Route path="/login" element={<Login/>} />
       <Route path="/register" element={<Register/>} />
