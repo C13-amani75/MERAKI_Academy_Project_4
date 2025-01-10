@@ -17,7 +17,7 @@
 }
 
 .App{
-  font-family: "Edu AU VIC WA NT Pre", serif;
+  font-family: "DM Serif Text", serif; 
   
   border: 3px solid rgb(84, 202, 54);
   background-color: var(--white);
@@ -230,7 +230,7 @@ header{
 .link , .name{
   margin-top: 2%;
   color: var(--buttonColor);
-  font-family: "Edu AU VIC WA NT Pre", serif;
+ /*  font-family: "Edu AU VIC WA NT Pre", serif; */
   text-decoration: none;
   color: #8E1616;
 
@@ -301,6 +301,7 @@ input{
   height: 20%;
   border: transparent;;
   background-color: var(--buyButton);
+  color: white;
 
 }
 button:hover{
@@ -575,7 +576,7 @@ flex-direction: column;
 
 }
 .productCode, .productTitle ,.price{
-  font-family: "Edu AU VIC WA NT Pre", serif;
+ /*  font-family: "Edu AU VIC WA NT Pre", serif; */
   font-optical-sizing: auto;
   font-weight: 800;
   font-style: normal;
@@ -631,7 +632,6 @@ flex-direction: column;
 }
 .pic{
   height:500px;
-
 }
 
 .cI{
@@ -664,7 +664,52 @@ flex-direction: column;
   background-color: var(--pag);
   text-align: left;
 }
+.completed{
+  width: 50%;
 
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  background-color: var(--pag);
+  color: var(--white);
+  text-align: left;
+  font-size: 1.5rem;
+  top: 40%;
+  max-height: 50%;
+  font-family: "Playwrite AU SA", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  
+}
+.n1{
+  color: var(--buyButton);
+}
+.paymentSection{
+  height: 35rem;
+  position: sticky;
+  top: 5%;
+/*  display: grid; */
+display: grid;
+grid-template-columns: 1fr;
+gap: 10%;
+}
+.total{
+  background-color: var(--buyButton);
+  color: var(--white);
+  font-size: 1rem;
+  font-family:   "DM Serif Text", serif;
+  font-size: 200;
+  height: 100%;
+  text-align: center;
+  padding: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 /* .imgCard{
   width: 100px;
   

@@ -122,8 +122,6 @@ useEffect(()=>{
     })
   }</div>
   <div className='paymentSection'>
-  <h1>React Stripe and the Payment Element</h1>
- 
   {clientSecret && stripePromise && (
         <Elements stripe={stripePromise} options={{ clientSecret }}>
           <CheckoutForm />
@@ -132,7 +130,10 @@ useEffect(()=>{
       
       
 
-    <p>totalPrice:{total}</p>
+    <h1 className='total'>
+      <span>total price</span>
+      <span>{total} $</span>
+      </h1>
     </div>
 
 </div>
