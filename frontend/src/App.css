@@ -302,6 +302,7 @@ input{
   border: transparent;;
   background-color: var(--buyButton);
   color: white;
+  padding: 2%;
 
 }
 button:hover{
@@ -683,32 +684,39 @@ flex-direction: column;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  padding: 2%;
   
 }
 .n1{
   color: var(--buyButton);
 }
 .paymentSection{
-  height: 35rem;
-  position: sticky;
-  top: 5%;
-/*  display: grid; */
-display: grid;
+  height: 55rem; 
+  position: sticky; 
+  top: 3%;
+ display: flex;
+ flex-direction: column;
+ gap: 5%;
 grid-template-columns: 1fr;
-gap: 10%;
+
+}
+.check{
+  height: 10%;
 }
 .total{
+  position: sticky;
+  top: 0;
   background-color: var(--buyButton);
   color: var(--white);
   font-size: 1rem;
   font-family:   "DM Serif Text", serif;
   font-size: 200;
-  height: 100%;
+ height: 10%;
   text-align: center;
   padding: 5%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 /* .imgCard{
   width: 100px;
