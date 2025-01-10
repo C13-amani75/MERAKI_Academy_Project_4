@@ -20,16 +20,14 @@ import { BsPersonCircle } from "react-icons/bs";
 import Categories from './components/role 2 interface/Categories';
 import Category from './components/role 2 interface/Category';
 import Product1 from './components/role 2 interface/Product1';
-import {Elements} from '@stripe/react-stripe-js';
-import {loadStripe} from '@stripe/stripe-js';
-import CheckoutForm from './components/payment.js/CheckoutForm';
+
 //........
 
 
   export const userContext = createContext()
   // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
 const App = () => {
  
     const [isUpdate,setUpdate] =useState(false)

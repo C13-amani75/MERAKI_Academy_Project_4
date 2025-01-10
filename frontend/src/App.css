@@ -84,8 +84,8 @@
 .a1{
   color: var(--black);
   position: absolute;
-  top:40%;
-  left: 30%;
+  top:35%;
+  left: 35%;
 }
 .fp{
   font-size: 1rem;
@@ -296,15 +296,16 @@ input{
   border: transparent;
 }
 .button1{
-  
   border-radius: 3%;
   width:30%;
   height: 20%;
   border: transparent;;
   background-color: var(--buyButton);
+
 }
 button:hover{
   background-color: var(--white);
+  color: var(--buyButton);
 }
 
 
@@ -431,14 +432,14 @@ font-size: 1.5rem;
  height: 75%;
 
 }
-.remove{
+/* .remove{
   padding: 2%;
   font-size: 1.3rem;
   background-color: var(--navy);
   letter-spacing: .5px;
   border: transparent;
   color: #fbfaf9;
-}
+} */
 .remove:hover{
   background-color: var(--pag);
 }
@@ -461,22 +462,64 @@ font-size: 1.5rem;
 
 .imgCard{
   border: #222fba 6px solid;
-  width:100%;
+
+  height: 100%;
+  width: 40%;
 }
+
+
 .productSection{
-  gap: 1%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-
+flex-direction: column;
   border: #d54309 6px solid;
+  justify-content: space-between;
+  margin: 1%;
+}
+.we1{
+  border: #56640e 6px solid;
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  gap: 2%;
+  text-align: left;
+  padding: 2%;
+  align-items: end;
+}
+.btn{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border: #008022 2px solid;
+}
+.cbtn{
+  width:100%;
+  border: #188bb1 2px solid;
+  height: 100%;
+  
+
+
+}
+.cbad{
+  height: 100%;
+  border: #1c1f20 2px solid;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+}
+
+.we2{
+  border: #d7691f 6px solid;
 }
 .paymentSection{
   border: #2aa5c4 6px solid;
 }
 .cardProduct{
   border: #aea916 6px solid;
-  width:20%;
+  display: flex;
+  justify-content: space-between;
+  height: 15rem;
 }
 
 
@@ -541,6 +584,26 @@ font-size: 1.5rem;
   font-size: 1.3rem;
 
 }
+.card{
+  padding: 2%;
+  background-color: var(--darkBrown);
+  width: 70%;
+  height: 30%;
+}
+.colorImage{
+  width:20px;
+  height: 20px;
+}
+.card:hover{
+  background-color: var(--pag);
+}
+.colors{
+  display: flex;
+}
+.paymentSection{
+  background-color: var(--pag);
+}
+
 /*  .back{
   transform: rotate(50deg);
   height: 70%;
@@ -557,6 +620,7 @@ font-size: 1.5rem;
   width: 80%;
   height: 100%;
   display: flex;
+  flex-direction: row;
   gap: 3%;
 
 } 
@@ -584,7 +648,13 @@ font-size: 1.5rem;
   top: 7%;
   z-index: 2;
   left: 5%;
-  border: #567cbd 1px solid;
+}
+.heart:hover{
+  color: #800000;
+}
+.cts{
+  font-weight: 800;
+  font-size: 1rem;
 }
 .productButton{
   display: flex;
@@ -593,25 +663,6 @@ font-size: 1.5rem;
 .productPage{
   background-color: var(--pag);
   text-align: left;
-}
-.card{
-  padding: 2%;
-  background-color: var(--darkBrown);
-  width: 70%;
-  height: 30%;
-}
-.colorImage{
-  width:20px;
-  height: 20px;
-}
-.card:hover{
-  background-color: var(--pag);
-}
-.colors{
-  display: flex;
-}
-.paymentSection{
-  background-color: var(--pag);
 }
 
 /* .imgCard{

@@ -1,17 +1,26 @@
 import React, { useContext, useEffect, useState } from 'react'
-import axios from 'axios'
+import axios from 'axios';
+import { RiDeleteBin5Line } from "react-icons/ri";
 import { userContext } from '../../App';
 import { Link,useNavigate } from 'react-router-dom';
+import { PaymentElement } from '@stripe/react-stripe-js';
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+import CheckoutForm from './CheckoutForm';
 
-
+const stripePromise = loadStripe('pk_test_51Qf56tGwWXeXknZRfCRaT2DoYiBm50zk3Wfuc8vp0H8gUJ47p5tV1oCP1spF8IrHUQhP5jO9QyeXH1UPrHFLkOTG00pnwkYRH7');
 const Card = () => {
   const Navigate = useNavigate()
+  const options = {
+    // passing the client secret obtained from the server
+    clientSecret: '{{CLIENT_SECRET}}',
+  };
+  
   //----------------------------------------
   const{token,product,setUpdate} = useContext(userContext)
   let [cardElement,setCard] = useState([])
   const {loginInfo,userId,setUserId} = useContext(userContext)
   const[total,setTotal] = useState(0)
-
 useEffect(()=>{
   const totalPrice = cardElement.reduce((acc,num,i)=>{
     console.log("acc",acc+ num.element.price * num.quantity);
@@ -48,7 +57,7 @@ useEffect(()=>{
     
     axios.get(`http://localhost:5000/product/card/${userId}`)
     .then((response)=>{
-      console.log("rsponse",response);
+      console.log("response",response);
       setCard(response.data.result)
     })
     .catch((error)=>{
@@ -64,23 +73,39 @@ useEffect(()=>{
   cardElement?.map((ele,i)=>{
       console.log(ele)
       return <div className='cardProduct'>
-        
+        <div className='we1'>
         <img className='imgCard' src={ele.color}/>
-        <p className='productTitle cI'>{ele.quantity} * {ele.element.price}$</p>
-        <p className='productTitle'> price: {ele.quantity * ele.element.price  } $</p>
-
-        <button className='remove' onClick={()=>{
+        <div className='cbad'>
+          <span>
+          <p className='cts'>size: {ele.size}</p>
+          <p ><span className='cts'>details:</span> {ele.element.description}</p>
+          </span>
+          
+          <div className='btn'>
+        <button className='cbtn button1' onClick={()=>{
           Navigate(`/categories/category/:name/${ele.element._id}`)
           setUpdate(true)
         }}>update</button>
-        <button className='remove'  onClick={()=>{
+        <button className='cbtn button1'  onClick={()=>{
           console.log(ele.element._id);
           deleteButton(ele.element._id)
-        }} >delete from card</button>
+        }} ><RiDeleteBin5Line /></button>
+        </div>
+      </div>
+        </div>
+<div className='we2'>
+<p className='productTitle cI'>{ele.quantity} * {ele.element.price}$</p>
+<p className='productTitle'> price: {ele.quantity * ele.element.price  } $</p>
+        </div>
       </div>
     })
   }</div>
-  <div className='paymentSection'><p>totalPrice:{total}</p></div>
+  <div className='paymentSection'>
+  <Elements stripe={stripePromise} options={options}>
+      <CheckoutForm />
+    </Elements>
+    <p>totalPrice:{total}</p>
+    </div>
 
 </div>
   )

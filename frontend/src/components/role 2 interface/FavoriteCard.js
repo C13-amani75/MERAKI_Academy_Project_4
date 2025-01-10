@@ -2,7 +2,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { userContext } from '../../App';
-
+import { FaHeart ,FaSearch } from "react-icons/fa";
 
 const FavoriteCard = () => {
   const{token,userId,setUserId} = useContext(userContext)
@@ -47,9 +47,9 @@ const deleteButton = (id)=>{
         //go to its full page
       }}>
         <img className='favImage' src={ele?.picture[0]}/>
-        <button className='remove' onClick={()=>{
+        <button className='button1' onClick={()=>{
           deleteButton(ele._id)
-        }}>remove from Favorite</button>
+        }}>remove from Favorite<br /><FaHeart/></button>
       </div>
 
     })}</div>

@@ -1,5 +1,6 @@
 import {PaymentElement} from '@stripe/react-stripe-js';
-
+import {withRouter} from 'react-router-dom'
+imp
 const CheckoutForm = () => {
   return (
     <form>
@@ -9,4 +10,4 @@ const CheckoutForm = () => {
   );
 };
 
-export default CheckoutForm;
+export default withRouter(CheckoutForm);
