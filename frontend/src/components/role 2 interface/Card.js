@@ -86,10 +86,6 @@ useEffect(()=>{
   //........................................
   return (
   <div className='cardPage'>
-    
-    {console.log(clientSecret ,"client ")}
-
-
     <div className='productSection'>{
   cardElement?.map((ele,i)=>{
       console.log(ele)
@@ -101,7 +97,6 @@ useEffect(()=>{
           <p className='cts'>size: {ele.size}</p>
           <p ><span className='cts'>details:</span> {ele.element.description}</p>
           </span>
-          
           <div className='btn'>
         <button className='cbtn button1' onClick={()=>{
           Navigate(`/categories/category/:name/${ele.element._id}`)
@@ -131,13 +126,7 @@ useEffect(()=>{
           <CheckoutForm />
         </Elements>
       )}
-      
-      
-
-   
     </div> 
-   
-
 </div>
   )
 }

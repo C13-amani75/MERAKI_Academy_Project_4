@@ -1,6 +1,7 @@
 const productModel = require("../models/proudectSchema")
 const userModel =require("../models/userSchema")
-const mongoose = require("mongoose");
+
+
 //use userEffect to call each category +call products 
 //add product -delete - update
 //............Admin features...........................
@@ -39,6 +40,7 @@ const addProduct = (req,res)=>{//Done
             res.json(err)
         })
 }
+
 const deleteProductById =(req,res)=>{ //Done
         const {id}= req.params
         productModel.deleteOne({_id:id})

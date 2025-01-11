@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams ,useSearchParams } from 'react-router-dom'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-
-
+import { userContext } from '../../App'
+import { IoStar } from "react-icons/io5";
 const Category = () => {
+  
   const Navigate = useNavigate()
   const [searchParam] = useSearchParams()
   const categoryName = searchParam.get("name")
@@ -21,16 +22,10 @@ const Category = () => {
     .then((result)=>{
       console.log("product of specific category",result.data);
       setCategoryProduct(result.data)
-      
-
     })
     .catch((error)=>{
       console.log(error);
-      
-
     })
-
-
   },[])
   
   //rendered all product the hold _id category from params 
@@ -48,6 +43,7 @@ const Category = () => {
         <span></span>
         <img className='singleImage' src={element.picture[0]}/>
         <p className='productCode'>{element.name}</p>
+        <p>Reviews: <IoStar /><IoStar /><IoStar /><IoStar /> {element.rate}</p>
         <p className='productTitle'>Prettylittlething</p>
         <p className='productDescription'>Beige Halter Neck Column Midaxi <br/>Shift Dress</p>
         <p className='price'>Price:{element.price} JOD</p>

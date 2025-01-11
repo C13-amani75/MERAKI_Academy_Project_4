@@ -29,7 +29,8 @@ import Completion from './components/role 2 interface/Completion';
 // recreating the `Stripe` object on every render.
 
 const App = () => {
- 
+
+const [rateSection,setRateSection] = useState({})
     const [isUpdate,setUpdate] =useState(false)
   const [product,setProduct] = useState({})
   const [userId,setUserId] = useState(localStorage.getItem("userId"))
@@ -66,7 +67,7 @@ setUrl(data.url) //set data to url by using setUrl
   return (
    /*  <Elements stripe={stripePromise} options={options}> */
 
-  <userContext.Provider value={{isUpdate,setUpdate,product,setProduct,userId,setUserId,setIsLogIn,loginInfo,setLogin,token,setToken,isRegister,setRegister,resultMessage,setResultMessage}} >
+  <userContext.Provider value={{rateSection,setRateSection,isUpdate,setUpdate,product,setProduct,userId,setUserId,setIsLogIn,loginInfo,setLogin,token,setToken,isRegister,setRegister,resultMessage,setResultMessage}} >
   <div className="App">
     <header>
     <h1><Link className='link ' to="/"><span className='ht'>Camelia</span> Store</Link></h1>

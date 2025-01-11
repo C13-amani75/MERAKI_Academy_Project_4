@@ -1,6 +1,49 @@
 const rateModel = require("../models/rateSchema");
+const productModel = require("../models/proudectSchema");
 //addRate , updateRate , deleteRate,calculate rate of each product in frontend
 
+//call in use effect of product
+const rateValue =(req,res)=>{  
+    const {productId} = req.params
+    let review = 0
+    let Raters = 0
+    let sum = 0
+    //every looping ++rayters
+    //if(productId === rateModel.product )
+      //review ++
+    //result review /ratings
+    //update productModel
+    rateModel.find({productId:productId})
+    .then((result)=>{
+    result.forEach((ele)=>{
+        Raters = Raters + 1
+        review += ele.rateValue
+        
+    })
+    sum = review/Raters;
+    productModel.findByIdAndUpdate({_id:productId},{$set:{rate:sum}})
+    .then((result1)=>{
+        console.log(result1);
+        
+    res.json({
+        result1:result1,
+        reviewsV:review,
+        RaterV:Raters,
+        result:sum
+    })
+    })
+    .catch((error)=>{
+        res.json(error)
+    })
+    })
+    .catch((error)=>{
+        res.json(error)
+    })
+    
+
+
+
+}
 const addRateByProductId =(req,res)=>{//Done ==>update + add
     console.log(req.token);
     const {userId} =req.token
@@ -69,5 +112,6 @@ const deleteRateByProductId = (req,res)=>{ //Done
 }
 module.exports= {
     addRateByProductId,
-    deleteRateByProductId
+    deleteRateByProductId,
+    rateValue
 }

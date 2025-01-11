@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams} from 'react-router-dom'
 import axios from 'axios'
@@ -6,9 +7,10 @@ import { SlBasket } from "react-icons/sl";
 import { userContext } from '../../App';
 import { MdOutlineStarBorder } from "react-icons/md";
 import { LuStarOff } from "react-icons/lu";
+import { IoStar } from "react-icons/io5";
 //if the user complete payment process delete the remind number of product in the store 
 const Product = () => {
-  const{token,product,setProduct,isUpdate,setUpdate} = useContext(userContext)
+  const{token,product,setProduct,isUpdate,setUpdate,setRateSection} = useContext(userContext)
   //use spread
   const [isFav,setIsFav]= useState(false)
   const [productPage,setProductPage] = useState({})
@@ -43,11 +45,22 @@ const Product = () => {
     })
 
   },[])
- /*  useEffect(()=>{
+  useEffect(()=>{
+    axios.get(`http://localhost:5000/rate//rateProduct/${id}`)
+    .then((result)=>{
+      setRateSection(result)
+      console.log("rate",result);
+      
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
+
+  },[rate])
+/*  useEffect(()=>{
     if(isRate){
       setIsRate(false)
     }
-   
       setIsRate(true)
   },[rate]) */
 const updateCardElement = ()=>{
