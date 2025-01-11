@@ -5,6 +5,7 @@ import { FaHeart ,FaSearch } from "react-icons/fa";
 import { SlBasket } from "react-icons/sl";
 import { userContext } from '../../App';
 import { MdOutlineStarBorder } from "react-icons/md";
+import { LuStarOff } from "react-icons/lu";
 //if the user complete payment process delete the remind number of product in the store 
 const Product = () => {
   const{token,product,setProduct,isUpdate,setUpdate} = useContext(userContext)
@@ -17,7 +18,11 @@ const Product = () => {
   const [isCompleted,setIsCompleted]=useState(false)
   const [updateCardValues,setUpdatedCard] =useState({})
   const [rate,setRate] = useState(0)
-  const [isRate,setIsRate]=useState(false)
+  const [isRate1,setIsRate1]=useState("") 
+  const [isRate2,setIsRate2]=useState("") 
+  const [isRate3,setIsRate3]=useState("") 
+  const [isRate4,setIsRate4]=useState("") 
+  const [isRate5,setIsRate5]=useState("") 
   const [color,setColor] = useState("white")
   
 /*   console.log(searchParam.get("")); */
@@ -38,13 +43,13 @@ const Product = () => {
     })
 
   },[])
-  useEffect(()=>{
+ /*  useEffect(()=>{
     if(isRate){
       setIsRate(false)
     }
    
       setIsRate(true)
-  },[rate])
+  },[rate]) */
 const updateCardElement = ()=>{
   //compare btw two values 
   axios.put(`http://localhost:5000/product/card/update/${id}`,{
@@ -79,10 +84,56 @@ const rateFunction = ()=>{
   })
 }
 const colorFunction =()=>{
-  if(isRate){
-    setColor("red")
+  /*   const [isRate1,setIsRate1]=useState("") 
+  const [isRate2,setIsRate2]=useState("") 
+  const [isRate3,setIsRate3]=useState("") 
+  const [isRate4,setIsRate4]=useState("") 
+  const [isRate5,setIsRate5]=useState("")  */
+  if(rate === 0){
+    setIsRate1("white")
+    setIsRate2("white")
+    setIsRate3("white")
+    setIsRate4("white")
+    setIsRate5("white")
   }
-  setColor("white")
+  else if(rate === 1){
+    setIsRate1("#8E1616")
+    setIsRate2("white")
+    setIsRate3("white")
+    setIsRate4("white")
+    setIsRate5("white")
+  }
+  else if(rate === 2){
+    setIsRate1("#8E1616")
+    setIsRate2("#8E1616")
+    setIsRate3("white")
+    setIsRate4("white")
+    setIsRate5("white")
+  }
+  else if(rate === 3){
+    setIsRate1("#8E1616")
+    setIsRate2("#8E1616")
+    setIsRate3("#8E1616")
+    setIsRate4("white")
+    setIsRate5("white")
+  }
+  else if(rate === 4){
+    setIsRate1("#8E1616")
+    setIsRate2("#8E1616")
+    setIsRate3("#8E1616")
+    setIsRate4("#8E1616")
+    setIsRate5("white")
+  }
+  else if(rate === 5){
+    setIsRate1("#8E1616")
+    setIsRate2("#8E1616")
+    setIsRate3("#8E1616")
+    setIsRate4("#8E1616")
+    setIsRate5("#8E1616")
+  }
+
+
+  
 }
 
   //..............addToFavorite.................
@@ -216,8 +267,52 @@ const colorFunction =()=>{
   }}
   >update</button>}
   <div>
-    <p>Reviews</p>
+    <p>please Rate:</p>
     <div>
+      <button className='rbtn' style={{color:"white"}} key={0} onClick={()=>{
+        //0
+          setRate(0)
+          rateFunction()
+          colorFunction()
+          
+        }}><LuStarOff /></button>
+    <button className='rbtn' style={{color:isRate1}} key={1} onClick={()=>{
+      //1
+          setRate(1)
+          rateFunction()
+          colorFunction()
+        }}><MdOutlineStarBorder />
+    </button>
+    <button className='rbtn' style={{color:isRate2}} key={2} onClick={()=>{
+      //2
+          setRate(2)
+          rateFunction()
+          colorFunction()
+        }}><MdOutlineStarBorder />
+    </button>
+    <button className='rbtn' style={{color:isRate3}} key={3} onClick={()=>{
+      //3
+          setRate(3)
+          rateFunction()
+          colorFunction()
+        }}><MdOutlineStarBorder />
+    </button>
+    <button className='rbtn' style={{color:isRate4}} key={4} onClick={()=>{
+      //4
+          setRate(4)
+          rateFunction()
+          colorFunction()
+        }}><MdOutlineStarBorder />
+    </button>
+    <button className='rbtn' style={{color:isRate5}} key={5} onClick={()=>{
+      //5
+          setRate(5)
+          rateFunction()
+          colorFunction()
+        }}><MdOutlineStarBorder />
+    </button>
+    </div>
+{/*     <div>
     <button  onClick={()=>{
       setRate(1)
       rateFunction()
@@ -247,7 +342,7 @@ const colorFunction =()=>{
       rateFunction()
       
   }}><MdOutlineStarBorder /></button>
-    </div>
+    </div> */}
   
   </div>
   <label className='productTitle'> pieces:</label><input onChange={(e)=>{

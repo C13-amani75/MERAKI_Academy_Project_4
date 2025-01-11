@@ -7,7 +7,7 @@
 :root{
   --buttonColor:#1c1f20;
   --buyButton:#800000;
-  --pag:#b29d8d;
+  --pag:#95b4be;
   --black:#1c1f20;
   --white:#fbfaf9;
   --lightblue:#c8d9e6;
@@ -226,6 +226,9 @@ header{
   display: flex;
   background-color:var(--pag);
   justify-content: space-evenly;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
 .link , .name{
   margin-top: 2%;
@@ -248,6 +251,12 @@ header{
 .link{
   color: #800000;
   text-decoration: none;
+}
+.rbtn{
+  background-color: transparent;
+  font-size: 1.4rem;
+  border: transparent;
+  color: var(--black);
 }
 .link:hover{
   text-decoration: none;

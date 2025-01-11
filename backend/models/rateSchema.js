@@ -6,7 +6,6 @@ const rateSchema = new mongoose.Schema({
     rateValue:{
         type:Number //[1,2,3,4,5] any of these numbers
     }
-
 })
 
 module.exports = mongoose.model("rate",rateSchema)
