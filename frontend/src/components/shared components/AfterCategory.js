@@ -11,11 +11,11 @@ const AfterCategory = () => {
       <img className='w123'  class="d-block w-100 " src="https://res.cloudinary.com/drhlmb3qr/image/upload/v1736428929/pexels-ron-lach-9849312_qudmsz.jpg" alt="First slide"/>
     </div>
     <div class="carousel-item">
-    <h1 className='serviceName a2'>Creating & Production</h1>
+    <h1 className='serviceName a2'>dressMaking</h1>
       <img className='w123'  class="d-block w-100 " src="https://res.cloudinary.com/drhlmb3qr/image/upload/v1736431254/pexels-michael-burrows-7147652_wmq4x9.jpg" alt="Second slide"/>
     </div>
     <div class="carousel-item">
-    <h1 className='serviceName a2'>Creating & Production</h1>
+    <h1 className='serviceName a2'>Manufacturing & production</h1>
       <img className='w123'  class="d-block w-100 " src="https://res.cloudinary.com/drhlmb3qr/image/upload/v1736428907/pexels-gustavo-fring-4173281_lbf7rh.jpg" alt="Second slide"/>
     </div>
     <div class="carousel-item">
@@ -31,7 +31,7 @@ const AfterCategory = () => {
       <img  className='w123' class="d-block w-100 " src="https://res.cloudinary.com/drhlmb3qr/image/upload/v1736428827/BERTA_evening___Available_at_our_Soho_showroom_nb2nir.jpg" alt="Third slide"/>
     </div>
     <div class="carousel-item">
-    <h1 className='serviceName a5'>All Of Or Services <br/>Are Available OnLine</h1>
+    <h1 className='serviceName a5'>All Of Our Services <br/>Are Available OnLine</h1>
       <img  className='w123' class="d-block w-100 " src="https://res.cloudinary.com/drhlmb3qr/image/upload/v1736432276/pexels-mikhail-nilov-6969967_1_e3munh.jpg" alt="Third slide"/>
     </div>
   </div>

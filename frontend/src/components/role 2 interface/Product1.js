@@ -4,6 +4,7 @@ import axios from 'axios'
 import { FaHeart ,FaSearch } from "react-icons/fa";
 import { SlBasket } from "react-icons/sl";
 import { userContext } from '../../App';
+import { MdOutlineStarBorder } from "react-icons/md";
 //if the user complete payment process delete the remind number of product in the store 
 const Product = () => {
   const{token,product,setProduct,isUpdate,setUpdate} = useContext(userContext)
@@ -15,6 +16,9 @@ const Product = () => {
   const {name,id} =useParams()
   const [isCompleted,setIsCompleted]=useState(false)
   const [updateCardValues,setUpdatedCard] =useState({})
+  const [rate,setRate] = useState(0)
+  const [isRate,setIsRate]=useState(false)
+  const [color,setColor] = useState("white")
   
 /*   console.log(searchParam.get("")); */
 /* {headers: {
@@ -34,6 +38,13 @@ const Product = () => {
     })
 
   },[])
+  useEffect(()=>{
+    if(isRate){
+      setIsRate(false)
+    }
+   
+      setIsRate(true)
+  },[rate])
 const updateCardElement = ()=>{
   //compare btw two values 
   axios.put(`http://localhost:5000/product/card/update/${id}`,{
@@ -52,6 +63,26 @@ const updateCardElement = ()=>{
     .catch((error)=>{
       console.log(error);
     })
+}
+const rateFunction = ()=>{
+  axios.post(`http://localhost:5000/rate/${id}`,{
+    "rateValue":rate
+  },{headers: {
+    Authorization: `Bearer ${token}`
+    }})
+  .then((result)=>{
+    console.log(result);
+    
+  })
+  .catch((error)=>{
+    console.log(error);
+  })
+}
+const colorFunction =()=>{
+  if(isRate){
+    setColor("red")
+  }
+  setColor("white")
 }
 
   //..............addToFavorite.................
@@ -137,7 +168,6 @@ const updateCardElement = ()=>{
         }
         else{
           setUpdatedCard({...updateCardValues,size:e.target.value})
-       
         }
       
 
@@ -185,6 +215,41 @@ const updateCardElement = ()=>{
     updateCardElement()
   }}
   >update</button>}
+  <div>
+    <p>Reviews</p>
+    <div>
+    <button  onClick={()=>{
+      setRate(1)
+      rateFunction()
+  }}><MdOutlineStarBorder /></button>
+    <button onClick={()=>{
+      setIsRate(true)
+      setRate(2)
+      rateFunction()
+      
+  }}><MdOutlineStarBorder /></button>
+    <button style={{color:color}} onClick={()=>{
+      colorFunction()
+      setRate(3)
+      rateFunction()
+      
+  }}><MdOutlineStarBorder /></button>
+
+    <button onClick={()=>{
+    
+      setRate(4)
+      rateFunction()
+      
+  }}><MdOutlineStarBorder /></button>
+
+    <button onClick={()=>{
+      setRate(5)
+      rateFunction()
+      
+  }}><MdOutlineStarBorder /></button>
+    </div>
+  
+  </div>
   <label className='productTitle'> pieces:</label><input onChange={(e)=>{
     if(!isUpdate){
       setProduct({...product,quantity:e.target.value})
@@ -193,10 +258,8 @@ const updateCardElement = ()=>{
       setUpdatedCard({...updateCardValues,quantity:e.target.value})
     }
   }}  type='number'  max={10} min={0}/>
-  
-  
-  
 </div>
+
 <p>{sendMessage}</p>
 </div>
 </div>

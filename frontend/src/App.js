@@ -65,15 +65,11 @@ setUrl(data.url) //set data to url by using setUrl
 }
   return (
    /*  <Elements stripe={stripePromise} options={options}> */
-       
-    
 
   <userContext.Provider value={{isUpdate,setUpdate,product,setProduct,userId,setUserId,setIsLogIn,loginInfo,setLogin,token,setToken,isRegister,setRegister,resultMessage,setResultMessage}} >
   <div className="App">
     <header>
     <h1><Link className='link ' to="/"><span className='ht'>Camelia</span> Store</Link></h1>
-      
-      
       <span className='searchInput'><input className='search' ></input><FaSearch className='searchSign' /></span>
       <ul className='headerList'>
         <li ><Link  className='headerIcon' to="/favoriteList" ><FaHeart /></Link></li>

@@ -10,7 +10,7 @@ const addRateByProductId =(req,res)=>{//Done ==>update + add
       //if he rate and the value of rating the same ==>no change
       //if he rate and the value is not the same update the value and ==>useEffect update the total rate of this product
       //if he didnt rate ==>add new rate document
-    rateModel.findOne({userId:userId})
+    rateModel.findOne({userId:userId,productId:productId})
     .then((result)=>{
         //if he didnt rate ==> add new rate document
         if(!result){
@@ -37,9 +37,12 @@ const addRateByProductId =(req,res)=>{//Done ==>update + add
             if(result.rateValue === rateValue){
                 res.json("you are already rated before  ")
             }
+            else{
             rateModel.updateOne({_id:result._id},{rateValue:rateValue})
-            .then((result)=>res.json(result)).catch((error)=>res.json(error))
+            .then((result)=>res.json(result))
+            .catch((error)=>res.json(error))
         }
+            }
     })
     .catch((error)=>{
         res.json(error)
