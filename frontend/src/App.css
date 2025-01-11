@@ -18,15 +18,12 @@
 
 .App{
   font-family: "DM Serif Text", serif; 
-  
-  border: 3px solid rgb(84, 202, 54);
   background-color: var(--white);
   justify-content: center;
   width: 100%; 
   text-align: center;  
 }
 .home{
-  border: 3px solid red;
   position: relative;
   left: 5%;
   right: 5%;
@@ -174,7 +171,7 @@
   color: var(--white);
   background-color: var(--black);
   width: 100%;
-  border: 3px solid red;
+ 
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -182,7 +179,6 @@
 }
 .footerSs{
   justify-content: center;
-  border: 3px solid rgb(195, 192, 25);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -264,7 +260,7 @@ header{
 }
 .registerSection{
   float: right;
-  border: #567cbd 2px solid;
+
 
   font-size: 25px;
   
@@ -277,7 +273,7 @@ header{
 }
 .name{
   width: 50%;
-  border: 2px solid black;
+
   display: flex;
   gap: 20%;
   
@@ -287,7 +283,7 @@ header{
 }
 .log ,.out , .register{
   color: var(--buttonColor);
-  border: #8E1616  2px solid;
+ 
 }
 .registerPage, .loginPage{
   font-weight: 600;
@@ -420,7 +416,6 @@ font-size: 1.5rem;
 
 .favPage{
   gap:3%;
-  border: #800000 7px solid;
   height: 100%;
   width: 100%;
   display: flex;
@@ -429,7 +424,7 @@ font-size: 1.5rem;
 }
 
 .fid {
-  border: #008022 4px solid;
+
   width: 25%;
   height: 25rem;
   display: flex;
@@ -438,7 +433,6 @@ font-size: 1.5rem;
 
 }
 .favImage{
-  border: #c39824 1px solid;
  width: 100%;
  height: 75%;
 
@@ -465,14 +459,14 @@ font-size: 1.5rem;
   flex-wrap: wrap;
 }
 .cardPage{
-  border: #24c369 6px solid;
+
   width: 100%;
   display: grid;
   grid-template-columns: 75% 25%;
 }
 
 .imgCard{
-  border: #222fba 6px solid;
+ 
 
   height: 100%;
   width: 40%;
@@ -483,12 +477,11 @@ font-size: 1.5rem;
   display: flex;
   flex-wrap: wrap;
 flex-direction: column;
-  border: #d54309 6px solid;
   justify-content: space-between;
   margin: 1%;
 }
 .we1{
-  border: #56640e 6px solid;
+
   display: flex;
   flex-direction: row;
   width: 50%;
@@ -501,11 +494,11 @@ flex-direction: column;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  border: #008022 2px solid;
+ 
 }
 .cbtn{
   width:100%;
-  border: #188bb1 2px solid;
+ 
   height: 100%;
   
 
@@ -513,21 +506,17 @@ flex-direction: column;
 }
 .cbad{
   height: 100%;
-  border: #1c1f20 2px solid;
+
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content:space-between;
 }
 
-.we2{
-  border: #d7691f 6px solid;
-}
-.paymentSection{
-  border: #2aa5c4 6px solid;
-}
+
+
 .cardProduct{
-  border: #aea916 6px solid;
+
   display: flex;
   justify-content: space-between;
   height: 15rem;
