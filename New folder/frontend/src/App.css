@@ -1,0 +1,727 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+:root{
+  --buttonColor:#1c1f20;
+  --buyButton:#800000;
+  --pag:#95b4be;
+  --black:#1c1f20;
+  --white:#fbfaf9;
+  --lightblue:#c8d9e6;
+  --teal:#567cbd;
+  --navy:#2f4156;
+  /* colors */
+}
+
+.App{
+  font-family: "DM Serif Text", serif; 
+  background-color: var(--white);
+  justify-content: center;
+  width: 100%; 
+  text-align: center;  
+}
+.home{
+  position: relative;
+  left: 5%;
+  right: 5%;
+  width:90%;
+  justify-content: center;
+
+}
+.carousel-control-prev-icon , .carousel-control-next-icon{
+  padding: 25%;
+  background-color: var(--black);
+}
+.headPage{
+ width: 50%;
+  color: var(--pag);
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-self: center;
+  text-align: center;
+  position: relative;
+  left: 20%;
+
+}
+.description{
+  font-weight: 600;
+  letter-spacing: .3rem;
+  font-size: 1rem;
+  color: var(--buttonColor);
+ /*  width: 50%; */
+ 
+}
+.serviceName{
+  font-weight: 800;
+  font-size: 5rem;
+  position: absolute;
+  top: 40%;
+  color: var(--lightblue);
+
+
+}
+.collection{
+  position: relative;
+  left: 35%;
+  margin-top: 4%;
+  border-bottom: 2px solid var(--black);
+  border-top: 2px solid var(--black);
+
+}
+.title1{
+  font-size: 3rem;
+  color: var(--buttonColor);
+  letter-spacing: .7rem;
+  font-family: "Edu AU VIC WA NT Pre", serif;
+}
+.a1{
+  color: var(--black);
+  position: absolute;
+  top:35%;
+  left: 35%;
+}
+.fp{
+  font-size: 1rem;
+  font-weight: 400;
+}
+.submit{
+  margin-top: 3%;
+  background-color: var(--pag);
+  font-size: 1rem;
+  font-weight: 600;
+}
+.a2{
+  position: absolute;
+  left:15%;
+  font-size: 4.5rem;
+
+}
+.a3{
+  position: absolute;
+  left: 20%;
+}
+.a4{
+  position: absolute;
+  left: 25%;
+}
+.a5{
+  position: absolute;
+  top:35%;
+  left: 15%;
+}
+.afterCaregory{
+  margin-top: 3%;
+  border-top: 3px solid black;
+
+  text-align: center;
+  width: 75%;
+  height: 30%;
+  position: relative;
+  left: 10%;
+  right: 10%;
+  justify-content: center;
+}
+
+.categoriesPage{
+  margin-top: 5%;
+  background-color: var(--lightblue);
+  text-align: center;
+  width: 75%;
+  height: 30%;
+  position: relative;
+  left: 10%;
+  right: 10%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  
+}
+
+.advantiges{
+ 
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap:1%;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 5%;
+  border-left: 6px solid var(--pag);
+  border-right: 6px solid var(--pag);
+  justify-content: center;
+
+}
+.s1{
+  width: 22%;
+  border-left: 3px solid var(--pag);
+  border-right: 3px solid var(--pag);
+}
+.logo1{
+  color: var(--pag);
+  font-size: 2rem;
+}
+.footer{
+  justify-content: center;
+  margin-top: 5%;
+  color: var(--white);
+  background-color: var(--black);
+  width: 100%;
+ 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+}
+.footerSs{
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.f{
+text-align: left;
+  width:20%;
+  text-indent: 0%;
+  float: right;
+  padding-left: 0%;
+  padding-right: 0%;
+}
+.f1{
+  margin-right: 10%;
+}
+.formPage{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+} 
+.linkF{
+  color: #96CEB4;
+}
+.w-100{
+  width: 30%;
+  height: 500px;
+}
+
+/* ....................Done .................... */
+/* .......header........................ */
+header{
+  padding-top: .5%;
+  font-family: "Edu AU VIC WA NT Pre", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--white);
+  flex-wrap: wrap;
+  font-size: 18px;
+  display: flex;
+  background-color:var(--pag);
+  justify-content: space-evenly;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.link , .name{
+  margin-top: 2%;
+  color: var(--buttonColor);
+ /*  font-family: "Edu AU VIC WA NT Pre", serif; */
+  text-decoration: none;
+  color: #8E1616;
+
+}
+.name{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.headerIcon:hover{
+ 
+  color: #e9f1e9;
+  text-decoration: none;
+}
+.link{
+  color: #800000;
+  text-decoration: none;
+}
+.rbtn{
+  background-color: transparent;
+  font-size: 1.4rem;
+  border: transparent;
+  color: var(--black);
+}
+.link:hover{
+  text-decoration: none;
+  color: #e9f1e9;
+}
+.registerSection{
+  float: right;
+
+
+  font-size: 25px;
+  
+  display: flex;
+  width: 20%;
+  gap: 3%;
+  justify-content:end;
+  color: var(--buttonColor);
+
+}
+.name{
+  width: 50%;
+
+  display: flex;
+  gap: 20%;
+  
+}
+::placeholder{
+  color: black;
+}
+.log ,.out , .register{
+  color: var(--buttonColor);
+ 
+}
+.registerPage, .loginPage{
+  font-weight: 600;
+  font-size: 35px;
+  border-radius: 2%;
+  padding-top: 5%;
+  width: 50%;
+  justify-content: center;
+  background-color: var(--pag);
+  position: absolute;
+  left: 25%;
+  right: 25%;
+}
+input{
+  border: transparent;
+}
+.button1{
+  border-radius: 3%;
+  width:30%;
+  height: 20%;
+  border: transparent;;
+  background-color: var(--buyButton);
+  color: white;
+  padding: 2%;
+
+}
+button:hover{
+  background-color: var(--white);
+  color: var(--buyButton);
+}
+
+
+
+.out{
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--teal);
+}
+
+.register{
+  gap: 10%;
+}
+.headerList{
+  gap: 10%;
+  color: var(--buttonColor);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+.headerIcon{
+  cursor: pointer;
+font-size: 2rem;
+color: var(--buttonColor);
+}
+
+/* ....................... */
+.searchInput{
+  margin-top: 1%;
+  color: #151615;
+  background-color: transparent;
+  width: 35%;
+  height: 80%;
+  padding-left: 0;
+  padding-right: 0%;
+  
+
+}
+.search{
+  border: transparent;
+  width: 80%;
+
+  background-color: transparent;
+}
+
+.searchSign{
+color: #e9f1e9;
+width: 10%;
+font-size: 1.5rem;
+}
+.search:hover{
+  background-color: var(--lightPag);
+}
+
+
+.ht{
+  letter-spacing: .4px;
+  font-size: 3rem;
+  color: var(--buttonColor);
+  letter-spacing: .6rem;
+  font-family: "Edu AU VIC WA NT Pre", serif;
+
+}
+.categoryElement{
+  border: transparent;
+  border-radius: 50%;
+  background-color: transparent;
+ /*  border-radius: 40%;
+  background-color:  var(--lightBrown);
+  cursor: pointer;
+  color: #151615;
+  font-size: 15px;
+  text-indent: .5px;
+  font-weight: 500;
+  font-family: "Edu AU VIC WA NT Pre", serif;
+
+  border: transparent;  */
+}
+.categoryImage{
+  border-radius: 50%;
+  border: 2px solid white;
+  width:12em;
+  height: 60%;
+} 
+
+
+/* .App {
+  overflow-x: hidden;
+  display: grid;
+  color: var(--pag);
+  background-color: var(--lightBrown);
+  font-size: 10px;
+  text-align: center;
+  display:grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10% auto ;
+} */
+/* .............here................. */
+
+
+.favPage{
+  gap:3%;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.fid {
+
+  width: 25%;
+  height: 25rem;
+  display: flex;
+  flex-wrap: wrap ;
+  justify-content: center;
+
+}
+.favImage{
+ width: 100%;
+ height: 75%;
+
+}
+/* .remove{
+  padding: 2%;
+  font-size: 1.3rem;
+  background-color: var(--navy);
+  letter-spacing: .5px;
+  border: transparent;
+  color: #fbfaf9;
+} */
+.remove:hover{
+  background-color: var(--pag);
+}
+/* .cardPage{
+  height: 100vh;
+  width: 100%;
+} */
+.main{
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.cardPage{
+
+  width: 100%;
+  display: grid;
+  grid-template-columns: 75% 25%;
+}
+
+.imgCard{
+ 
+
+  height: 100%;
+  width: 40%;
+}
+
+
+.productSection{
+  display: flex;
+  flex-wrap: wrap;
+flex-direction: column;
+ 
+  margin: 1%;
+}
+.we1{
+
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  gap: 2%;
+  text-align: left;
+  padding: 2%;
+  align-items: end;
+}
+.workerImg{
+  width: 20%;
+  height: 20%;
+}
+.btn{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+ 
+}
+.cbtn{
+  width:100%;
+ 
+  height: 100%;
+  
+
+
+}
+.cbad{
+  height: 100%;
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+}
+
+
+
+.cardProduct{
+
+  display: flex;
+  justify-content: space-between;
+  height: 15rem;
+}
+
+
+/* ............header.............. */
+
+/* .categoryElement{
+  
+  border-radius: 10%;
+  background-color:  var(--lightBrown);
+  cursor: pointer;
+  color: #151615;
+  font-size: 15px;
+  text-indent: .5px;
+  font-weight: 500;
+  font-family: "Edu AU VIC WA NT Pre", serif;
+
+  border: transparent; 
+}
+ */
+
+/* ...........categoriesPage.............. */
+.category{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  justify-content: center;
+  gap: 5%; 
+ /*  grid-template-columns:; */
+}
+.product{
+  margin: 0;
+  padding: 0;
+  width: 25%;  
+  border: transparent;
+  height: 10%;
+  text-align: center;
+  margin: 1%;
+  cursor: pointer;
+  color: #151615;
+  font-size: 15px;
+  text-indent: .5px;
+  text-align: left;
+  background-color: transparent;
+
+}
+/* .product:hover{
+  border: 15px solid white;
+
+} */
+.singleImage{
+  width:100%;
+  height: 25rem;
+
+}
+.productCode, .productTitle ,.price{
+ /*  font-family: "Edu AU VIC WA NT Pre", serif; */
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+.price ,.productTitle{
+  font-size: 1.3rem;
+
+}
+.card{
+  padding: 2%;
+  background-color: var(--darkBrown);
+  width: 70%;
+  height: 30%;
+}
+.colorImage{
+  width:20px;
+  height: 20px;
+}
+.card:hover{
+  background-color: var(--pag);
+}
+.colors{
+  display: flex;
+}
+.paymentSection{
+  background-color: var(--pag);
+}
+
+/*  .back{
+  transform: rotate(50deg);
+  height: 70%;
+  width:100%;
+  background-image: url("https://res.cloudinary.com/drhlmb3qr/image/upload/v1736267538/Premium_jersey_hxsnpi.jpg");
+
+}   */
+/* --page of each category--- */
+
+.productPage{
+  position: relative;
+  left: 10%;
+  justify-items: center; 
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 3%;
+
+} 
+.productImages{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+
+.cI{
+  font-weight: 400;
+}
+
+.slide{
+  height: 50%;
+}
+.heart{
+  font-size: 250%;
+  cursor: pointer;
+  position: absolute;
+  top: 7%;
+  z-index: 2;
+  left: 5%;
+}
+.heart:hover{
+  color: #800000;
+}
+.cts{
+  font-weight: 800;
+  font-size: 1rem;
+}
+.productButton{
+  display: flex;
+  gap: 4%;
+}
+.productPage{
+  background-color: var(--pag);
+  text-align: left;
+}
+.completed{
+  width: 50%;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  background-color: var(--pag);
+  color: var(--white);
+  text-align: left;
+  font-size: 1.5rem;
+  top: 40%;
+  max-height: 50%;
+  font-family: "Playwrite AU SA", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  padding: 2%;
+  
+}
+.n1{
+  color: var(--buyButton);
+}
+.paymentSection{
+  height: 55rem; 
+  position: sticky; 
+  top: 3%;
+ display: flex;
+ flex-direction: column;
+ gap: 5%;
+grid-template-columns: 1fr;
+
+}
+.check{
+  height: 10%;
+}
+.total{
+  position: sticky;
+  top: 0;
+  background-color: var(--buyButton);
+  color: var(--white);
+  font-size: 1rem;
+  font-family:   "DM Serif Text", serif;
+  font-size: 200;
+ height: 10%;
+  text-align: center;
+  padding: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+/* .imgCard{
+  width: 100px;
+  
+} */
+
+
+/* --page of each product--- */
