@@ -7,7 +7,6 @@
 <h3 align="center">Camellia Store
 </h3>
 
----
 
 <p align="center"> Its an online and on site store , offer a lot of services like : designing  ,styling ,manufacturing,selling ,the client can book any of these services online or onsite like :"design specific dress or shoes or bag","choose stylist who will help client to choose best style depending on its personality or culture and other features like :"height ,"color skin","weight".
 the other service is manufacturing its own product ,special packaging.
@@ -27,7 +26,9 @@ the other service is manufacturing its own product ,special packaging.
 - [Guided By](#guided_by)
 
 ## 🧐 About <a name = "about"></a>
-are you struggle in finding best style for your personality ,weight ,height and the color of your skin ?! or finding the best designer?  the answer <a href="#">Camelia Store Company </a>offers all of these services online in one place and with selling products not just dresses put also bags and shoes and online and on-site.  
+are you struggle in finding best style for your personality ,weight ,height and the color of your skin ?!
+ or finding the best designer?
+ the answer: <a href="http://localhost:3000/">Camelia Store Company </a>offers all of these services online in one place and with selling products not just dresses put also bags and shoes(Online and on-Site).  
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
